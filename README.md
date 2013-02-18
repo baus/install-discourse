@@ -1,6 +1,6 @@
 # Overview
 
-Discourse is the new (web discussion forum software)[http://discourse.org] by Jeff Atwood, co-founder of StackOverflow. While I believe, based on the current
+Discourse is the new [web discussion forum software](http://discourse.org) by Jeff Atwood, co-founder of StackOverflow. While I believe, based on the current
 state of forum software, it is going to be a breakout success, it is still in a very early forum, and if you are not 
 an expert on Linux and Rail administration, getting a Discourse site up and running can be dunting task.
 
