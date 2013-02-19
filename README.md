@@ -22,7 +22,7 @@ up to date packages. With a project as cutting edge as Discourse, this makes ins
 to download packages from source and install them, so my instructions with assume Ubuntu 12.10 x64 server (note:  with 
 small RAM amounts, a 32bit image would probably work as well, but I'm standardizing on 64bit images). 
 
-After createing your account at DigitalOcean, select the OS image you want, and DigitalOcean will email the root 
+After creating your account at DigitalOcean, select the Ubuntu OS image you want, and DigitalOcean will email the root 
 password to you.
 
 # Login to your server
@@ -143,7 +143,7 @@ admin@host:~$ cp ./database.yml.sample ./database.yml
 admin@host:~$ cp ./redis.yml.sample ./redis.yml
 ```
 
-Now you need to edit the configuration files with your own settings. To do this you have to use your favorite 
+Now you need to edit the configuration files with your own settings. To do this you should use your favorite 
 text editor. Vi is installed by default, but I like emacs, so I installed it with: 
 
 ```
@@ -153,7 +153,7 @@ admin@host:~$ sudo apt-get install emacs
 
 Start by editing the database configuration file which should be now located at ~/discourse/config/database.yml
 
-```
+```bash
 admin@host:~$ vi ~/discourse/config/database.yml
 ```
 
@@ -187,63 +187,44 @@ production:
     - production.localhost
 ```
 
-Note: I'm not a big fan of entering the DB password as clear text in the database.yml file. You have a better solution
+I'm not a big fan of entering the DB password as clear text in the database.yml file. You have a better solution
 to this, let me know. Also, I'm not sure why the production database name is set to discourse_development, so I changed
 it to 'discourse_production.' An alternative might be to just call it 'discourse'
 
-admin@host:~$ cd ~/discourse/config
-admin@host:~$ cp ./database.yml.sample ./database.yml
-admin@host:~$ cp ./redis.yml.sample ./redis.yml
+In this initial installation, I'm going to use thin to server both static and dynamic content. In a future revision, I 
+will setup Discourse behind nginx, but using thin is simpler for the first installation. To do this, you have change
+~/discourse/config/environments/production.rb to server static files, so edit the file.
 
+```bash
+admin@host:~$ vi ~/discourse/config/environments/production.rb
+```
 
-admin@host:~$ rake db:seed_fu
-admin@host:~$ redis-cli flushall
-admin@host:~$ thin start
-
+And change the following line:
 
 ```
+config.serve_static_assets = false
+```
+
+to :
+
+```
+config.serve_static_assets = true
+```
+
+# Deploy the db and start the server
+
+Now you should be ready to deploy the database and start the server.
+
+```
+admin@host:~$ cd ~/discourse
+# Set Rails configuration
+admin@host:~$ export RAILS_ENV=production
 admin@host:~$ rake db:create
 admin@host:~$ rake db:migrate
 admin@host:~$ rake db:seed_fu
+admin@host:~$ rake assets:precompile
 admin@host:~$ redis-cli flushall
-admin@host:~$ thin start
+admin@host:~$ thin -p 80 start
 ```
 
-# Set Rails configuration
-export RAILS_ENV=development
 
-# Ubuntu Dependencies (from fresh 12.10 install)
-```
-ruby1.9.3
-git
-redis-server
-bundler
-postgresql-contrib
-libxml2-dev
-libxslt-dev
-libpq-dev
-```
-
-# configure database.yml
-* Add username: 
-* Add password: 
-
-# Postgres cheatsheet
-
-## login to db as root user
-sudo -u postgres psql postgres
-
-## show users
-\du
-
-## Create User
-CREATE USER <name>;
-
-## Change User Password
-ALTER USER name PASSWORD 'password';
-
-## Make user superuser
-ALTER USER <name> WITH SUPERUSER;
-
-## connect over TCP/IP
-psql -h host -p port -U username -W password database
