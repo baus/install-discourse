@@ -6,8 +6,8 @@ and if you are not an expert on Linux and Rail administration, getting a Discour
 daunting task.
 
 While I consider myself to be moderately skilled at Linux administration, this is the first Rails app I have 
-attempted to deploy and run, so now that I've been through the installation 
-process a few times, I've decided to try to more formally document it for others who want to try out the software.
+attempted to deploy and run, so now that I've been through the installation process a few times, I've decided to attempt
+to more formally document it for others who want to try out the software.
 
 # Install on a DigitalOcean VPS using Ubuntu 12.10x64
 
@@ -130,11 +130,83 @@ admin@host:~$ git clone https://github.com/discourse/discourse.git
 admin@host:~$ cd discourse
 # Now install the application dependencies using bundle
 admin@host:~$ sudo bundle install
-rake db:create
-rake db:migrate
-rake db:seed_fu
-redis-cli flushall
-thin start
+```
+
+# Set Discourse application settings
+Now you have set the Discourse application settings. The configuration files are in a directory called "config"
+There are sample configuration files now included in the master branch, so you need to copy these files and
+modify them with your own changes.
+
+```
+admin@host:~$ cd ~/discourse/config
+admin@host:~$ cp ./database.yml.sample ./database.yml
+admin@host:~$ cp ./redis.yml.sample ./redis.yml
+```
+
+Now you need to edit the configuration files with your own settings. To do this you have to use your favorite 
+text editor. Vi is installed by default, but I like emacs, so I installed it with: 
+
+```
+admin@host:~$ sudo apt-get install emacs
+```
+
+
+Start by editing the database configuration file which should be now located at ~/discourse/config/database.yml
+
+```
+admin@host:~$ vi ~/discourse/config/database.yml
+```
+
+The production section of the configuration file should look something like the following:
+
+```
+# using the test db, so jenkins can run this config
+# we need it to be in production so it minifies assets
+production:
+  adapter: postgresql
+  database: discourse_development
+  pool: 5
+  timeout: 5000
+  host_names:
+    - production.localhost
+```
+
+Edit the file to add your Postgres username and password to the file as follows:
+
+```
+# using the test db, so jenkins can run this config
+# we need it to be in production so it minifies assets
+production:
+  adapter: postgresql
+  database: discourse_production
+  username: admin
+  password: <your_postgres_password>
+  pool: 5
+  timeout: 5000
+  host_names:
+    - production.localhost
+```
+
+Note: I'm not a big fan of entering the DB password as clear text in the database.yml file. You have a better solution
+to this, let me know. Also, I'm not sure why the production database name is set to discourse_development, so I changed
+it to 'discourse_production.' An alternative might be to just call it 'discourse'
+
+admin@host:~$ cd ~/discourse/config
+admin@host:~$ cp ./database.yml.sample ./database.yml
+admin@host:~$ cp ./redis.yml.sample ./redis.yml
+
+
+admin@host:~$ rake db:seed_fu
+admin@host:~$ redis-cli flushall
+admin@host:~$ thin start
+
+
+```
+admin@host:~$ rake db:create
+admin@host:~$ rake db:migrate
+admin@host:~$ rake db:seed_fu
+admin@host:~$ redis-cli flushall
+admin@host:~$ thin start
 ```
 
 # Set Rails configuration
