@@ -75,6 +75,10 @@ want to run as root. This includes apt-get commands to install packages.
 ```bash
 # Install the Postgres sql server
 admin@host:~# sudo apt-get install postgresql-9.1
+# Install make
+admin@host:~# sudo apt-get install make
+# Install g++ c/c++ compiler
+admin@host:~# sudo apt-get install g++
 # Install the Ruby language
 admin@host:~# sudo apt-get install ruby1.9.3
 # Install the Bundler app which installs Rails dependencies
