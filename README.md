@@ -86,24 +86,10 @@ admin@host:~# sudo gem install bundler
 
 # Configure Postgres user account
 
-Like all the cool kids these days, Discourse uses the Postgres database as a datastore. The configuration procedure is
-similar to MySQL, but I am a Postgres newbie, so if you have improvements to this aspect of the installation procedure, 
-please let me know.
-
+Discourse uses the Postgres database as a datastore. The configuration procedure is similar to MySQL, but 
+I am a Postgres newbie, so if you have improvements to this aspect of the installation procedure, please let me know.
 ```bash
-# Login into Postgres using the Postgres user credentials. 
-# The -u switch tells sudo to run with the specified user credentials.
-# psql is the Postgres client, and the final postgres tells psql to use the postgres system database.
-admin@host:~$ sudo -u postgres psql postgres
-# Now at the postgres prompt, I'm going to create a new Postgres user called admin
-postgres=# CREATE USER admin;
-# Now I'm going to give the user SUPERUSER rights. This is required to allow rails to create and configure Postgres
-# databases. I would like to create an account with more granualar access controls in future revisions of this document.
-postgres=# ALTER USER admin WITH SUPERUSER;
-# Finally, set the password on the new account.
-ALTER USER name PASSWORD 'password';
-# Exit the psql client
-postgres=# \q
+admin@host:~$ sudo -u postgres createuser admin -s -P
 ```
 # Pull and configure the latest version of the Discourse app.
 
