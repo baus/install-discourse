@@ -1,1 +1,4 @@
-# Put instructions on moving to production here
+# Discourse Production Configuration
+export RAILS_ENV=production
+edit config/initializers/secrete_token.rb
+
