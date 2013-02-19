@@ -27,8 +27,8 @@ available for Discourse, so I will start there.
 # Provision your server
 
 While I'm a long time RedHat and CentOS user, I've recently made the move to Ubuntu, primarily because they offer more 
-up to date packages. With a project as cutting edge as Discourse, this makes installation easier as it prevents having
-to download packages from source and install them, so my instructions with assume Ubuntu 12.10 x64 server (note:  with 
+up-to-date packages. With a project as cutting edge as Discourse, this makes installation easier as it prevents having
+to download packages from source and install them, so my instructions use Ubuntu 12.10 x64 server (note:with 
 small RAM amounts, a 32bit image would probably work as well, but I'm standardizing on 64bit images). 
 
 After creating your account at DigitalOcean, select the Ubuntu OS image you want, and DigitalOcean will email the root 
@@ -37,7 +37,7 @@ password to you.
 # Login to your server
 
 If you are using OS X or Linux, fire up a terminal ssh to your new server which be at the IP address that DigitialOcean 
-has provided. Windows users should consider installing Putty to access your new server.
+has provided. Windows users should consider installing [Putty](http://putty.org/) to access your new server.
 
 ```bash
 # From your local shell
