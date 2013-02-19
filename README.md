@@ -78,7 +78,8 @@ want to run as root. This includes apt-get commands to install packages.
 # Note: This installs redis 2.4. 
 # Discourse explicitly states that they require Redis 2.6. This should be addressed, 
 # and requires building Redis from source.
-admin@host:~# sudo apt-get install postgresql-9.1 postgresql-contrib-9.1 make g++ libxml2-dev libxslt-dev libpq-dev ruby1.9.3 git redis-server
+admin@host:~# sudo apt-get install postgresql-9.1 postgresql-contrib-9.1 make g++ \
+libxml2-dev libxslt-dev libpq-dev ruby1.9.3 git redis-server
 # Install the Bundler app which installs Rails dependencies
 admin@host:~# sudo gem install bundler
 ```
