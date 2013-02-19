@@ -99,14 +99,14 @@ please let me know.
 # psql is the Postgres client, and the final postgres tells psql to use the postgres system database.
 admin@host:~$ sudo -u postgres psql postgres
 # Now at the postgres prompt, I'm going to create a new Postgres user called admin
-postgres=# CREATE USER admin;
+postgres=\# CREATE USER admin;
 # Now I'm going to give the user SUPERUSER rights. This is required to allow rails to create and configure Postgres
 # databases. I would like to create an account with more granualar access controls in future revisions of this document.
-postgres=# ALTER USER admin WITH SUPERUSER;
+postgres=\# ALTER USER admin WITH SUPERUSER;
 # Finally, set the password on the new account.
 ALTER USER name PASSWORD 'password';
 # Exit the psql client
-postgres=# \q
+postgres=\# \q
 ```
 
 - Postgres 9.1
