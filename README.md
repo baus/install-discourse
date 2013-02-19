@@ -13,6 +13,11 @@ to more formally document it for others who want to try out the software.
 The following will set up the *development* environment. I am still working out the specifics of 
 deploying a production installation.
 
+# Warning
+
+Not only is Discourse new software, these instructions have been pulled together after a couple days of research. 
+Use at your own risk. 
+
 # Install on a DigitalOcean VPS using Ubuntu 12.10x64
 
 [DigitalOcean](https://www.digitalocean.com/) is offering very inexpensive VPS options based on SSDs. While their
