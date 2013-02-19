@@ -75,6 +75,7 @@ want to run as root. This includes apt-get commands to install packages.
 ```bash
 # Install the Postgres sql server
 admin@host:~# sudo apt-get install postgresql-9.1
+admin@host:~# sudo apt-get install postgresql-contrib-9.1
 # Install make
 admin@host:~# sudo apt-get install make
 # Install g++ c/c++ compiler
