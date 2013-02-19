@@ -129,7 +129,7 @@ in this branch, so changes may occur at ANY time.
 admin@host:~$ git clone https://github.com/discourse/discourse.git
 admin@host:~$ cd discourse
 # Now install the application dependencies using bundle
-admin@host:~$ sudo bundle install
+admin@host:~$ bundle install
 ```
 
 # Set Discourse application settings
