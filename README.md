@@ -211,6 +211,25 @@ to :
 config.serve_static_assets = true
 ```
 
+# Set the cookie token
+
+The last configuration step is set a token which is used in cookies for securing sessions in:
+~/discourse/config/initializers/secret_token.rb
+
+```bash
+admin@host:~$ vi ~/discourse/config/initializers/secret_token.rb
+```
+
+Uncomment the line:
+```
+# Discourse::Application.config.secret_token = "SET_SECRET_HERE"
+```
+
+And put a random string of at least 30 chars in the value.
+```
+Discourse::Application.config.secret_token = "put_your_secret_value_here"
+```
+
 # Deploy the db and start the server
 
 Now you should be ready to deploy the database and start the server.
