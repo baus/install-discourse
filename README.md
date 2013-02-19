@@ -18,7 +18,7 @@ available for Discourse, so I will start there.
 # Provision your server
 
 While I'm a long time RedHat and CentOS user, I've recently made the move to Ubuntu, primarily because they offer more 
-update to date packages. With a project as cutting edge as Discourse, this makes installation easier as it prevents having
+up to date packages. With a project as cutting edge as Discourse, this makes installation easier as it prevents having
 to download packages from source and install them, so my instructions with assume Ubuntu 12.10 x64 server (note:  with 
 small RAM amounts, a 32bit image would probably work as well, but I'm standardizing on 64bit images). 
 
@@ -36,7 +36,7 @@ has provided. Windows users should consider installing Putty to access your new 
 # Enter your root password
 ```
 
-# Change your roor password
+# Change your root password
 
 Since your password has been emailed to you in clear text, you should immediately change your password for security reasons.
 
@@ -90,9 +90,24 @@ admin@host:~# sudo apt-get install git
 # Configure Postgres user account
 
 Like all the cool kids these days, Discourse uses the Postgres database as a datastore. The configuration procedure is
-similar to MySQL, but I will admit that I am somewhat of a Postgres newbie, so I'm looking to improve this aspect of
-the installation procedure.
+similar to MySQL, but I am a Postgres newbie, so if you have improvements to this aspect of the installation procedure, 
+please let me know.
 
+```bash
+# Login into Postgres using the Postgres user credentials. 
+# The -u switch tells sudo to run with the specified user credentials.
+# psql is the Postgres client, and the final postgres tells psql to use the postgres system database.
+admin@host:~$ sudo -u postgres psql postgres
+# Now at the postgres prompt, I'm going to create a new Postgres user called admin
+postgres=# CREATE USER admin;
+# Now I'm going to give the user SUPERUSER rights. This is required to allow rails to create and configure Postgres
+# databases. I would like to create an account with more granualar access controls in future revisions of this document.
+postgres=# ALTER USER admin WITH SUPERUSER;
+# Finally, set the password on the new account.
+ALTER USER name PASSWORD 'password';
+# Exit the psql client
+postgres=# \q
+```
 
 - Postgres 9.1
  - Enable support for HSTORE
