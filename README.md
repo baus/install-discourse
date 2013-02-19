@@ -92,7 +92,7 @@ I am a Postgres newbie, so if you have improvements to this aspect of the instal
 ```bash
 admin@host:~$ sudo -u postgres createuser admin -s -P
 ```
-# Pull and configure the latest version of the Discourse app.
+# Pull and configure the latest version of the Discourse app
 
 Now we are ready install the actual Discourse application. Note this step shows how to pull the latest version
 of the Discourse application from the main development branch. At this point, there a lot of changes occuring
@@ -131,12 +131,12 @@ Start by editing the database configuration file which should be now located at 
 admin@host:~$ vi ~/discourse/config/database.yml
 ```
 
-The production section of the configuration file should look something like the following:
+The development section of the configuration file should look something like the following:
 
 ```
 # using the test db, so jenkins can run this config
 # we need it to be in production so it minifies assets
-production:
+development:
   adapter: postgresql
   database: discourse_development
   pool: 5
@@ -148,63 +148,19 @@ production:
 Edit the file to add your Postgres username and password to the file as follows:
 
 ```
-# using the test db, so jenkins can run this config
-# we need it to be in production so it minifies assets
-production:
+development:
   adapter: postgresql
-  database: discourse_production
+  database: discourse_development
   username: admin
   password: <your_postgres_password>
   pool: 5
   timeout: 5000
   host_names:
-    - production.localhost
+    - "localhost"
 ```
 
-I'm not a big fan of entering the DB password as clear text in the database.yml file. You have a better solution
-to this, let me know. Also, I'm not sure why the production database name is set to discourse_development, so I changed
-it to 'discourse_production.' An alternative might be to just call it 'discourse'
-
-In this initial installation, I'm going to use thin to server both static and dynamic content. In a future revision, I 
-will setup Discourse behind nginx, but using thin is simpler for the first installation. To do this, you have change
-~/discourse/config/environments/production.rb to server static files, so edit the file.
-
-```bash
-admin@host:~$ vi ~/discourse/config/environments/production.rb
-```
-
-And change the following line:
-
-```
-config.serve_static_assets = false
-```
-
-to :
-
-```
-config.serve_static_assets = true
-```
-
-# Set the cookie token
-
-The last configuration step is set a token which is used in cookies for securing sessions in:
-~/discourse/config/initializers/secret_token.rb
-
-```bash
-admin@host:~$ vi ~/discourse/config/initializers/secret_token.rb
-```
-
-Uncomment the line:
-```
-# Discourse::Application.config.secret_token = "SET_SECRET_HERE"
-```
-
-And put a random string of at least 30 chars in the value.
-```
-Discourse::Application.config.secret_token = "put_your_secret_value_here"
-```
-
-And then remove the rest of the code from the file. That is used in development and test environments.
+I'm not a big fan of entering the DB password as clear text in the database.yml file. If you have a better solution
+to this, let me know. 
 
 # Deploy the db and start the server
 
@@ -213,7 +169,7 @@ Now you should be ready to deploy the database and start the server.
 ```
 admin@host:~$ cd ~/discourse
 # Set Rails configuration
-admin@host:~$ export RAILS_ENV=production
+admin@host:~$ export RAILS_ENV=development
 admin@host:~$ rake db:create
 admin@host:~$ rake db:migrate
 admin@host:~$ rake db:seed_fu
