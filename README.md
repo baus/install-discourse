@@ -247,7 +247,7 @@ admin@host:~$ rake db:migrate
 admin@host:~$ rake db:seed_fu
 admin@host:~$ rake assets:precompile
 admin@host:~$ redis-cli flushall
-admin@host:~$ thin -p 80 start
+admin@host:~$ sudo thin -p 80 start
 ```
 
 
