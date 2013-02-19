@@ -82,6 +82,7 @@ admin@host:~# sudo apt-get install postgresql-9.1 postgresql-contrib-9.1 make g+
 libxml2-dev libxslt-dev libpq-dev ruby1.9.3 git redis-server
 # Install the Bundler app which installs Rails dependencies
 admin@host:~# sudo gem install bundler
+admin@host:~# sudo gem install therubyracer -v '0.11.3' 
 ```
 
 # Configure Postgres user account
