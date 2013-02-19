@@ -81,7 +81,7 @@ admin@host:~# sudo apt-get install ruby1.9.3
 #
 # Note: This installs redis 2.4. 
 # Discourse explicitly states that they require Redis 2.6. This should be addressed, 
-# and requires building redis from source.
+# and requires building Redis from source.
 admin@host:~# sudo apt-get install redis-server
 # Install git to allow pulling Discourse source from github.
 admin@host:~# sudo apt-get install git
