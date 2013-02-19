@@ -77,6 +77,8 @@ want to run as root. This includes apt-get commands to install packages.
 admin@host:~# sudo apt-get install postgresql-9.1
 # Install the Ruby language
 admin@host:~# sudo apt-get install ruby1.9.3
+# Install the Bundler app which installs Rails dependencies
+admin@host:~# sudo gem install bundler
 # Install the Redis datastore
 #
 # Note: This installs redis 2.4. 
