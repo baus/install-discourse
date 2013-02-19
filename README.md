@@ -95,11 +95,18 @@ admin@host:~# sudo gem install therubyracer -v '0.11.3'
 
 # Configure Postgres user account
 
-Discourse uses the Postgres database as a datastore. The configuration procedure is similar to MySQL, but 
+Discourse uses the Postgres database to store forum data. The configuration procedure is similar to MySQL, but 
 I am a Postgres newbie, so if you have improvements to this aspect of the installation procedure, please let me know.
+
+Note: this is the easiest way to setup the Postgres server, but it also creates a highly privledged Postgres user account. 
+Future revisions of this document may offer alternatives for creating the Postgres DBs, which would allow Discourse
+to login to Postgres as a user with lower privledges.
+
 ```bash
 admin@host:~$ sudo -u postgres createuser admin -s -P
 ```
+
+
 # Pull and configure the latest version of the Discourse app
 
 Now we are ready install the actual Discourse application. Note this step shows how to pull the latest version
