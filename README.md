@@ -79,6 +79,10 @@ admin@host:~# sudo apt-get install postgresql-9.1
 admin@host:~# sudo apt-get install make
 # Install g++ c/c++ compiler
 admin@host:~# sudo apt-get install g++
+# Install libraries used to compile Ruby modules with native extensions
+admin@host:~# sudo apt-get install libxml2-dev
+admin@host:~# sudo apt-get install libxslt-dev
+admin@host:~# sudo apt-get install libpq-dev
 # Install the Ruby language
 admin@host:~# sudo apt-get install ruby1.9.3
 # Install the Bundler app which installs Rails dependencies
