@@ -25,7 +25,7 @@ small RAM amounts, a 32bit image would probably work as well, but I'm standardiz
 After createing your account at DigitalOcean, select the OS image you want, and DigitalOcean will email the root 
 password to you.
 
-# Login In
+# Login to your server
 
 If you are using OS X or Linux, fire up a terminal ssh to your new server which be at the IP address that DigitialOcean 
 has provided. Windows users should consider installing Putty to access your new server.
@@ -65,10 +65,22 @@ root@host:~# logout
 
 # Use apt-get to install core system dependencies
 
-The apt-get command is used to add packages to Ubuntu (and all Debian based). DigitalOcean, like many VPS's ships
-with a very basc
+The apt-get command is used to add packages to Ubuntu (and all Debian based). DigitalOcean, like many VPS's, ships
+with a limited Ubuntu configuration, so you will have to install many of the software the dependencies yourself.
 
+To install system packages, you have to have root privledges. Since the admin account is part of the sudo group, the
+admin account can run commands with root privledges by using the sudo command. Just prepend sudo to any commands you
+want to run as root. This includes apt-get commands to install packages.
 
+```bash
+# Install the Postgres sql server
+admin@host:~# sudo apt-get install postgresql-9.1
+# Install the Ruby language
+admin@host:~# sudo apt-get install ruby1.9.3
+# Install the Redis datastore
+# Note: This installs redis 2.4. Discourse explicitly states that they require Redis 2.6. This should be improved.
+admin@host:~# sudo apt-get install redis-server
+```
 
 
 - Postgres 9.1
