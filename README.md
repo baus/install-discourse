@@ -134,20 +134,6 @@ Start by editing the database configuration file which should be now located at 
 admin@host:~$ vi ~/discourse/config/database.yml
 ```
 
-The development section of the configuration file should look something like the following:
-
-```
-# using the test db, so jenkins can run this config
-# we need it to be in production so it minifies assets
-development:
-  adapter: postgresql
-  database: discourse_development
-  pool: 5
-  timeout: 5000
-  host_names:
-    - production.localhost
-```
-
 Edit the file to add your Postgres username and password to the file as follows:
 
 ```
