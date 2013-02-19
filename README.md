@@ -20,9 +20,8 @@ Use at your own risk.
 
 # Install on a DigitalOcean VPS using Ubuntu 12.10x64
 
-[DigitalOcean](https://www.digitalocean.com/) is offering very inexpensive VPS options based on SSDs. While their
-offering isn't as proven as others including Linode, DigitalOcean is one of the least expensive hosting options 
-available for Discourse, so I will start there.
+[DigitalOcean](https://www.digitalocean.com/) is offering very inexpensive VPS options based on SSDs. Please note that it has 
+been determined that to complete a full production installation of Discourse, 1GB of RAM is required. 
 
 # Provision your server
 
@@ -31,8 +30,8 @@ up-to-date packages. With a project as cutting edge as Discourse, this makes ins
 to download packages from source and install them, so my instructions use Ubuntu 12.10 x64 server (note:with 
 small RAM amounts, a 32bit image would probably work as well, but I'm standardizing on 64bit images). 
 
-After creating your account at DigitalOcean, select the Ubuntu OS image you want, and DigitalOcean will email the root 
-password to you.
+After creating your account at DigitalOcean, create a Droplet with at least 1GB of RAM, and select the Ubuntu 
+OS image you want to use. DigitalOcean will email the root password to you.
 
 # Login to your server
 
