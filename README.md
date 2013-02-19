@@ -78,8 +78,13 @@ admin@host:~# sudo apt-get install postgresql-9.1
 # Install the Ruby language
 admin@host:~# sudo apt-get install ruby1.9.3
 # Install the Redis datastore
-# Note: This installs redis 2.4. Discourse explicitly states that they require Redis 2.6. This should be improved.
+#
+# Note: This installs redis 2.4. 
+# Discourse explicitly states that they require Redis 2.6. This should be addressed, 
+# and requires building redis from source.
 admin@host:~# sudo apt-get install redis-server
+# Install git to allow pulling Discourse source from github.
+admin@host:~# sudo apt-get install git
 ```
 
 
