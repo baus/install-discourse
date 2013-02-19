@@ -25,15 +25,15 @@ small RAM amounts, a 32bit image would probably work as well, but I'm standardiz
 After createing your account at DigitalOcean, select the OS image you want, and DigitalOcean will email the root 
 password to you.
 
-# Login in
+# Login In
 
 If you are using OS X or Linux, fire up a terminal ssh to your new server which be at the IP address that DigitialOcean 
 has provided. Windows users should consider installing Putty to access your new server.
 
 ```bash
-# # From your local shell
-# ssh root@<new_ip_addr>
-# # Enter your root password
+# From your local shell
+~$ ssh root@<ip_addr>
+# Enter your root password
 ```
 
 # Change your roor password
@@ -44,6 +44,30 @@ Since your password has been emailed to you in clear text, you should immediatel
 root@host:~# passwd
 # # Enter your new password
 ```
+
+# Create a user account
+
+It is bad practice to admin your system from the root account. 
+Create an administrative account, and add it to the sudo group, so the account can 
+make system changes with the sudo command. In this case, I'm going to call the new users "admin."
+
+```bash
+root@host:~# adduser admin
+root@host:~# adduser admin sudo
+```
+# Logout and log back in using the admin account
+
+```bash
+root@host:~# logout
+# now back at the local terminal prompt
+~$ ssh admin@<ip_addr>
+```
+
+# Use apt-get to install core system dependencies
+
+The apt-get command is used to add packages to Ubuntu (and all Debian based). DigitalOcean, like many VPS's ships
+with a very basc
+
 
 
 
