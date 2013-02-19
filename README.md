@@ -87,6 +87,12 @@ admin@host:~# sudo apt-get install redis-server
 admin@host:~# sudo apt-get install git
 ```
 
+# Configure Postgres user account
+
+Like all the cool kids these days, Discourse uses the Postgres database as a datastore. The configuration procedure is
+similar to MySQL, but I will admit that I am somewhat of a Postgres newbie, so I'm looking to improve this aspect of
+the installation procedure.
+
 
 - Postgres 9.1
  - Enable support for HSTORE
@@ -134,7 +140,7 @@ libpq-dev
 # Postgres cheatsheet
 
 ## login to db as root user
-sudo -u postgres postgres
+sudo -u postgres psql postgres
 
 ## show users
 \du
