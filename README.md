@@ -74,29 +74,13 @@ admin account can run commands with root privledges by using the sudo command. J
 want to run as root. This includes apt-get commands to install packages.
 
 ```bash
-# Install the Postgres sql server
-admin@host:~# sudo apt-get install postgresql-9.1
-admin@host:~# sudo apt-get install postgresql-contrib-9.1
-# Install make
-admin@host:~# sudo apt-get install make
-# Install g++ c/c++ compiler
-admin@host:~# sudo apt-get install g++
-# Install libraries used to compile Ruby modules with native extensions
-admin@host:~# sudo apt-get install libxml2-dev
-admin@host:~# sudo apt-get install libxslt-dev
-admin@host:~# sudo apt-get install libpq-dev
-# Install the Ruby language
-admin@host:~# sudo apt-get install ruby1.9.3
-# Install the Bundler app which installs Rails dependencies
-admin@host:~# sudo gem install bundler
-# Install the Redis datastore
-#
+# Install required packages
 # Note: This installs redis 2.4. 
 # Discourse explicitly states that they require Redis 2.6. This should be addressed, 
 # and requires building Redis from source.
-admin@host:~# sudo apt-get install redis-server
-# Install git to allow pulling Discourse source from github.
-admin@host:~# sudo apt-get install git
+admin@host:~# sudo apt-get install postgresql-9.1 postgresql-contrib-9.1 make g++ libxml2-dev libxslt-dev libpq-dev ruby1.9.3 git redis-server
+# Install the Bundler app which installs Rails dependencies
+admin@host:~# sudo gem install bundler
 ```
 
 # Configure Postgres user account
