@@ -99,33 +99,27 @@ please let me know.
 # psql is the Postgres client, and the final postgres tells psql to use the postgres system database.
 admin@host:~$ sudo -u postgres psql postgres
 # Now at the postgres prompt, I'm going to create a new Postgres user called admin
-postgres=\# CREATE USER admin;
+postgres=# CREATE USER admin;
 # Now I'm going to give the user SUPERUSER rights. This is required to allow rails to create and configure Postgres
 # databases. I would like to create an account with more granualar access controls in future revisions of this document.
-postgres=\# ALTER USER admin WITH SUPERUSER;
+postgres=# ALTER USER admin WITH SUPERUSER;
 # Finally, set the password on the new account.
 ALTER USER name PASSWORD 'password';
 # Exit the psql client
-postgres=\# \q
+postgres=# \q
 ```
+# Pull and configure the latest version of the Discourse app.
 
-- Postgres 9.1
- - Enable support for HSTORE
- - Create a discourse database and seed it with a basic image
-- Redis 2.6
-- Ruby 1.9.3
- - Install all rubygems via bundler
- - Edit database.yml and redis.yml and point them at your databases.
- - Prepackage all assets using rake
- - Run the Rails database migrations 
- - Run a sidekiq process for background jobs
- - Run a clockwork process for enqueing scheduled jobs
- - Run several Rails processes, preferably behind a proxy like Nginx.
+Now we are ready install the actual Discourse application. Note this step shows how to pull the latest version
+of the Discourse application from the main development branch. At this point, there a lot of changes occuring
+in this branch, so changes may occur at ANY time.
 
-```
-git clone git@github.com:discourse/discourse.git
-cd discourse
-sudo bundle install
+```bash
+# Pull the latest version from github.
+admin@host:~$ git clone https://github.com/discourse/discourse.git
+admin@host:~$ cd discourse
+# Now install the application dependencies using bundle
+admin@host:~$ sudo bundle install
 rake db:create
 rake db:migrate
 rake db:seed_fu
