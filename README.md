@@ -65,7 +65,7 @@ root@host:~# logout
 
 # Use apt-get to install core system dependencies
 
-The apt-get command is used to add packages to Ubuntu (and all Debian based). DigitalOcean, like many VPS's, ships
+The apt-get command is used to add packages to Ubuntu (and all Debian based Linux distributions). DigitalOcean, like many VPS's, ships
 with a limited Ubuntu configuration, so you will have to install many of the software the dependencies yourself.
 
 To install system packages, you have to have root privledges. Since the admin account is part of the sudo group, the
