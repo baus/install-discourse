@@ -1,5 +1,5 @@
 # Overview
-Copyright 2013 by Christopher Baus christopher@baus.net. Licensed under GPL 1.3
+Copyright 2013 by Christopher Baus <christopher@baus.net>. Licensed under GPL 1.3
 
 Discourse is the new [web discussion forum software](http://discourse.org) by Jeff Atwood (et al.). Considering the 
 state of forum software, I'm confident it is going to be a breakout success. With that said it is still in a 
