@@ -230,6 +230,8 @@ And put a random string of at least 30 chars in the value.
 Discourse::Application.config.secret_token = "put_your_secret_value_here"
 ```
 
+And then remove the rest of the code from the file. That is used in development and test environments.
+
 # Deploy the db and start the server
 
 Now you should be ready to deploy the database and start the server.
