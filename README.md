@@ -3,10 +3,10 @@
 Discourse is the new [web discussion forum software](http://discourse.org) by Jeff Atwood. Based on the current
 state of forum software, I'm confident it is going to be a breakout success, but it is still in a very early state, 
 and if you are not an expert on Linux and Rail administration, getting a Discourse site up and running can be 
-dunting task.
+daunting task.
 
-While I consider myself to be moderately skilled at Linux administration, this is the first Rails app
-(I prefer Python myself) I have attempted to deploy and run, so now that I've been through the installation 
+While I consider myself to be moderately skilled at Linux administration, this is the first Rails app I have 
+attempted to deploy and run, so now that I've been through the installation 
 process a few times, I've decided to try to more formally document it for others who want to try out the software.
 
 # Install on a DigitalOcean VPS using Ubuntu 12.10x64
