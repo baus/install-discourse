@@ -105,7 +105,6 @@ to login to Postgres as a user with lower privledges.
 admin@host:~$ sudo -u postgres createuser admin -s -P
 ```
 
-
 # Pull and configure the latest version of the Discourse app
 
 Now we are ready install the actual Discourse application. Note this step shows how to pull the latest version
@@ -159,13 +158,14 @@ development:
     - "localhost"
 ```
 
-I'm not a big fan of entering the DB password as clear text in the database.yml file. If you have a better solution
+I'm not a fan of entering the DB password as clear text in the database.yml file. If you have a better solution
 to this, let me know. 
 
 # Deploy the db and start the server
 
 Now you should be ready to deploy the database and start the server.
 
+This will start the development enviroment on port 3000.
 ```
 admin@host:~$ cd ~/discourse
 # Set Rails configuration
@@ -175,5 +175,7 @@ admin@host:~$ rake db:migrate
 admin@host:~$ rake db:seed_fu
 admin@host:~$ thin start
 ```
+
+# Installing the production environment
 
 
