@@ -188,7 +188,7 @@ sudo cp nginx.sample.conf /etc/nginx/sites-available/discourse.conf
 ```
 edit /etc/nginx/site-available/discourse.conf
 
-change 
+change the following lines: 
 ```
 upstream discourse {
   server unix:///var/www/discourse/tmp/sockets/puma0.sock;
@@ -197,8 +197,8 @@ upstream discourse {
   server unix:///var/www/discourse/tmp/sockets/puma3.sock;
 }
 ```
-to
 
+to:
 ```
 upstream discourse {
   server unix:///var/www/discourse/tmp/sockets/puma.0.sock;
@@ -208,11 +208,12 @@ upstream discourse {
 }
 ```
 
-I think this is typo in the sample configuration file
+I think this is typo in the sample configuration file.
 
 ```bash
 sudo ln -s /etc/nginx/sites-available/discourse.conf /etc/nginx/sites-enabled/discourse.conf
 sudo rm /etc/nginx/sites-enabled/default
 sudo service nginx start
+sudo -u www-data mkdir /var/www/discourse/tmp/sockets
 thin start -s4 --socket /var/www/discourse/tmp/sockets/puma.sock
 ```
