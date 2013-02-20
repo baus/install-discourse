@@ -216,4 +216,5 @@ sudo rm /etc/nginx/sites-enabled/default
 sudo service nginx start
 sudo -u www-data mkdir /var/www/discourse/tmp/sockets
 sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/puma.sock
+sudo -u www-data thin stop -e production -s4 --socket /var/www/discourse/tmp/sockets/puma.sock
 ```
