@@ -21,7 +21,7 @@ Use at your own risk.
 # Install on a DigitalOcean VPS using Ubuntu 12.10x64
 
 [DigitalOcean](https://www.digitalocean.com/) is offering very inexpensive VPS options based on SSDs. Please note that it has 
-been determined that to complete a full production installation of Discourse, 1GB of RAM is required. 
+been determined that to complete a full production installation of Discourse *1GB of RAM is required*. 
 
 # Provision your server
 
