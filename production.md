@@ -1,7 +1,8 @@
+# Discourse Production Configuration
+
 ```
 sudo apt-get install nginx
 
-# Discourse Production Configuration
 export RAILS_ENV=production
 
 edit config/initializers/secrete_token.rb
