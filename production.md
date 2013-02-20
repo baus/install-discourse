@@ -1,3 +1,4 @@
+```
 sudo apt-get install nginx
 /var/www/discourse/public 
 
@@ -12,3 +13,4 @@ sudo chown www-data /var/www
 sudo chgrp www-data /var/www
 sudo cp nginx.sample.conf /etc/nginx/sites-available/discourse.conf
 sudo ln -s /etc/nginx/sites-available/discourse.conf /etc/nginx/sites-enabled/discourse.conf
+```
