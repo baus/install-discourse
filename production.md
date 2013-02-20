@@ -213,6 +213,6 @@ I think this is typo in the sample configuration file
 ```bash
 sudo ln -s /etc/nginx/sites-available/discourse.conf /etc/nginx/sites-enabled/discourse.conf
 sudo rm /etc/nginx/sites-enabled/default
-sudo nginx start
+sudo service nginx start
 thin start -s4 --socket /var/www/discourse/tmp/sockets/puma.sock
 ```
