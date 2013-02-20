@@ -15,4 +15,5 @@ sudo cp nginx.sample.conf /etc/nginx/sites-available/discourse.conf
 sudo ln -s /etc/nginx/sites-available/discourse.conf /etc/nginx/sites-enabled/discourse.conf
 sudo rm /etc/nginx/sites-enabled/default
 sudo nginx start
+thin start -s4 --socket /var/www/discourse/tmp/sockets/puma.sock
 ```
