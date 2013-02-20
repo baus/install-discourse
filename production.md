@@ -94,9 +94,6 @@ to login to Postgres as a user with lower privledges.
 admin@host:~$ sudo -u postgres createuser admin -s -P
 ```
 
-```
-sudo cp nginx.sample.conf /etc/nginx/sites-available/discourse.conf
-```
 
 # Pull and configure the latest version of the Discourse app
 
@@ -155,35 +152,17 @@ development:
 I'm not a big fan of entering the DB password as clear text in the database.yml file. If you have a better solution
 to this, let me know. 
 
-# Deploy the db and start the server
-
-Now you should be ready to deploy the database and start the server.
-
-```
-admin@host:~$ cd ~/discourse
-# Set Rails configuration
-admin@host:~$ export RAILS_ENV=development
-admin@host:~$ rake db:create
-admin@host:~$ rake db:migrate
-admin@host:~$ rake db:seed_fu
-admin@host:~$ thin start
-```
-
-
 
 # Discourse Production Configuration
 
 ```
-sudo apt-get install nginx
-
 export RAILS_ENV=production
 
 edit config/initializers/secrete_token.rb
-sudo -u www-data cp -r discourse/ /var/www
 sudo mkdir /var/www
 sudo chown www-data /var/www
 sudo chgrp www-data /var/www
-sudo cp -r discourse /var/www/ 
+sudo -u www-data cp -r discourse/ /var/www
 sudo cp nginx.sample.conf /etc/nginx/sites-available/discourse.conf
 ```
 edit /etc/nginx/site-available/discourse.conf
