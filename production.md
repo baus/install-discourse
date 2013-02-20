@@ -179,13 +179,38 @@ sudo apt-get install nginx
 export RAILS_ENV=production
 
 edit config/initializers/secrete_token.rb
-sudo
 sudo -u www-data cp -r discourse/ /var/www
 sudo mkdir /var/www
 sudo chown www-data /var/www
 sudo chgrp www-data /var/www
 sudo cp -r discourse /var/www/ 
 sudo cp nginx.sample.conf /etc/nginx/sites-available/discourse.conf
+```
+edit /etc/nginx/site-available/discourse.conf
+
+change 
+```
+upstream discourse {
+  server unix:///var/www/discourse/tmp/sockets/puma0.sock;
+  server unix:///var/www/discourse/tmp/sockets/puma1.sock;
+  server unix:///var/www/discourse/tmp/sockets/puma2.sock;
+  server unix:///var/www/discourse/tmp/sockets/puma3.sock;
+}
+```
+to
+
+```
+upstream discourse {
+  server unix:///var/www/discourse/tmp/sockets/puma.0.sock;
+  server unix:///var/www/discourse/tmp/sockets/puma.1.sock;
+  server unix:///var/www/discourse/tmp/sockets/puma.2.sock;
+  server unix:///var/www/discourse/tmp/sockets/puma.3.sock;
+}
+```
+
+I think this is typo in the sample configuration file
+
+```bash
 sudo ln -s /etc/nginx/sites-available/discourse.conf /etc/nginx/sites-enabled/discourse.conf
 sudo rm /etc/nginx/sites-enabled/default
 sudo nginx start
