@@ -215,5 +215,5 @@ sudo ln -s /etc/nginx/sites-available/discourse.conf /etc/nginx/sites-enabled/di
 sudo rm /etc/nginx/sites-enabled/default
 sudo service nginx start
 sudo -u www-data mkdir /var/www/discourse/tmp/sockets
-thin start -s4 --socket /var/www/discourse/tmp/sockets/puma.sock
+sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/puma.sock
 ```
