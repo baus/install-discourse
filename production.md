@@ -5,7 +5,7 @@ This document explains how to deploy a production Discourse environment on Ubunt
 [DigitalOcean](https://www.digitalocean.com/) VPS. These instructions should work on any Ubuntu 12.10 installation, but
 I have tested them on Digital Ocean because it is one of the of the least expensive hosting options for Discourse.
 
-# Warning
+# Warning -- THIS IS WORK IN PROGRESS --
 
 Not only is Discourse new software, these instructions have been pulled together after a couple days of research. 
 Use at your own risk. Also there are multiple ways to deploy the production environmen, and there maybe 
