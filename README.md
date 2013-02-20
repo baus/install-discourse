@@ -144,7 +144,10 @@ Start by editing the database configuration file which should be now located at 
 admin@host:~$ vi ~/discourse/config/database.yml
 ```
 
-Edit the file to add your Postgres username and password to the file as follows:
+Edit the file to add your Postgres username and password to each configuration in the file. Also add host: localhost
+to the production configuration because the production DB will also be run on the localhost in this configuration.
+
+When you are done the file should look some like:
 
 ```
 development:
@@ -152,10 +155,38 @@ development:
   database: discourse_development
   username: admin
   password: <your_postgres_password>
+  host: localhost
   pool: 5
   timeout: 5000
   host_names:
     - "localhost"
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  adapter: postgresql
+  database: discourse_test
+  username: admin
+  password: <your_postgres_password>
+  host: localhost
+  pool: 5
+  timeout: 5000
+  host_names:
+    - test.localhost
+
+# using the test db, so jenkins can run this config
+# we need it to be in production so it minifies assets
+production:
+  adapter: postgresql
+  database: discourse_development
+  username: admin
+  password: <your_postgres_password>
+  host: localhost
+  pool: 5
+  timeout: 5000
+  host_names:
+    - production.localhost
 ```
 
 I'm not a fan of entering the DB password as clear text in the database.yml file. If you have a better solution
