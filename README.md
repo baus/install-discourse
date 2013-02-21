@@ -209,7 +209,7 @@ admin@host:~$ thin start
 
 # Installing the production environment
 
-WARNING -- very preliminary recipe follows --
+## WARNING: very preliminary recipe follows
 
 # Setup the www-data account
 ```bash
