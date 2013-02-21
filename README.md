@@ -233,10 +233,10 @@ upstream discourse {
 to:
 ```
 upstream discourse {
-  server unix:///var/www/discourse/tmp/sockets/puma.0.sock;
-  server unix:///var/www/discourse/tmp/sockets/puma.1.sock;
-  server unix:///var/www/discourse/tmp/sockets/puma.2.sock;
-  server unix:///var/www/discourse/tmp/sockets/puma.3.sock;
+  server unix:///var/www/discourse/tmp/sockets/thin.0.sock;
+  server unix:///var/www/discourse/tmp/sockets/thin.1.sock;
+  server unix:///var/www/discourse/tmp/sockets/thin.2.sock;
+  server unix:///var/www/discourse/tmp/sockets/thin.3.sock;
 }
 ```
 
@@ -262,6 +262,6 @@ admin@host:~$ sudo -u www-data mkdir /var/www/discourse/tmp/sockets
 # Start thin as daemon listening on domain sockets
 ```bash
 admin@host:~$ cd /var/www/discourse
-admin@host:~$ sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/puma.sock
+admin@host:~$ sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/thin.sock
 ```
 
