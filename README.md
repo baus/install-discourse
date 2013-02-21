@@ -218,6 +218,8 @@ sudo chgrp www-data /var/www
 sudo chmod g+w /var/www
 ```
 
+# Configure nginx
+
 edit ~/discourse/config/nginx.sample.conf
 
 change the following lines: 
@@ -240,20 +242,29 @@ upstream discourse {
 }
 ```
 
+
 I think this is typo in the sample configuration file.
 
-```
+```bash
 cd ~/discourse/
-vi config/initializers/secret_token.rb
-export RAILS_ENV=production
-rake assets:precompile
-sudo -u www-data cp -r discourse/ /var/www
 sudo cp config/nginx.sample.conf /etc/nginx/sites-available/discourse.conf
 sudo ln -s /etc/nginx/sites-available/discourse.conf /etc/nginx/sites-enabled/discourse.conf
 sudo rm /etc/nginx/sites-enabled/default
 sudo service nginx start
+```
+
+# Deploy Discourse app to /var/www
+```
+vi config/initializers/secret_token.rb
+export RAILS_ENV=production
+rake assets:precompile
+sudo -u www-data cp -r discourse/ /var/www
 sudo -u www-data mkdir /var/www/discourse/tmp/sockets
+```
+
+# Start thin as daemon listening on domain sockets
+```bash
+cd /var/www/discourse
 sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/puma.sock
-sudo -u www-data thin stop -e production -s4 --socket /var/www/discourse/tmp/sockets/puma.sock
 ```
 
