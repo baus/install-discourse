@@ -4,8 +4,8 @@ Copyright 2013 by Christopher Baus <christopher@baus.net>. Licensed under GPL 1.
 Discourse is the new [web discussion forum software](http://discourse.org) by Jeff Atwood (et al.). Considering the 
 state of forum software, I'm confident it is going to be a success. With that said it is still in a 
 very early state, and if you are not an expert on Linux and Rail administration, getting a Discourse site up 
-and running can be a daunting task. Although I am not a Rails developer, I personally spent a few days getting a production
-build up and running.
+and running can be a daunting task. Although I am not a Rails developer, I personally spent a few days getting a 
+production build up and running.
 
 # Warning
 
@@ -81,7 +81,7 @@ want to run as root. This includes apt-get commands to install packages.
 # Discourse explicitly states that they require Redis 2.6. This should be addressed, 
 # and requires building Redis from source.
 admin@host:~$ sudo apt-get install postgresql-9.1 postgresql-contrib-9.1 make g++ \
-libxml2-dev libxslt-dev libpq-dev ruby1.9.3 git redis-server nginx
+libxml2-dev libxslt-dev libpq-dev ruby1.9.3 git redis-server nginx sendmail
 # Install the Bundler app which installs Rails dependencies
 admin@host:~$ sudo gem install bundler
 admin@host:~$ sudo gem install therubyracer
