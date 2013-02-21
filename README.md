@@ -213,16 +213,19 @@ admin@host:~$ thin start
 
 # Setup the www-data account
 ```bash
-sudo mkdir /var/www
-sudo chgrp www-data /var/www
-sudo chmod g+w /var/www
+admin@host:~$ sudo mkdir /var/www
+admin@host:~$ sudo chgrp www-data /var/www
+admin@host:~$ sudo chmod g+w /var/www
 ```
 
 # Configure nginx
 
-edit ~/discourse/config/nginx.sample.conf
+```bash
+admin@host:~$ vi ~/discourse/config/nginx.sample.conf
+```
 
-change the following lines: 
+Change the following lines: 
+
 ```
 upstream discourse {
   server unix:///var/www/discourse/tmp/sockets/puma0.sock;
@@ -242,29 +245,28 @@ upstream discourse {
 }
 ```
 
-
-I think this is typo in the sample configuration file.
+I think this is a typo in the sample configuration file.
 
 ```bash
-cd ~/discourse/
-sudo cp config/nginx.sample.conf /etc/nginx/sites-available/discourse.conf
-sudo ln -s /etc/nginx/sites-available/discourse.conf /etc/nginx/sites-enabled/discourse.conf
-sudo rm /etc/nginx/sites-enabled/default
-sudo service nginx start
+admin@host:~$ cd ~/discourse/
+admin@host:~$ sudo cp config/nginx.sample.conf /etc/nginx/sites-available/discourse.conf
+admin@host:~$ sudo ln -s /etc/nginx/sites-available/discourse.conf /etc/nginx/sites-enabled/discourse.conf
+admin@host:~$ sudo rm /etc/nginx/sites-enabled/default
+admin@host:~$ sudo service nginx start
 ```
 
 # Deploy Discourse app to /var/www
 ```
-vi config/initializers/secret_token.rb
-export RAILS_ENV=production
-rake assets:precompile
-sudo -u www-data cp -r discourse/ /var/www
-sudo -u www-data mkdir /var/www/discourse/tmp/sockets
+admin@host:~$ vi config/initializers/secret_token.rb
+admin@host:~$ export RAILS_ENV=production
+admin@host:~$ rake assets:precompile
+admin@host:~$ sudo -u www-data cp -r discourse/ /var/www
+admin@host:~$ sudo -u www-data mkdir /var/www/discourse/tmp/sockets
 ```
 
 # Start thin as daemon listening on domain sockets
 ```bash
-cd /var/www/discourse
-sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/puma.sock
+admin@host:~$ cd /var/www/discourse
+admin@host:~$ sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/puma.sock
 ```
 
