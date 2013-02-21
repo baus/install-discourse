@@ -2,16 +2,10 @@
 Copyright 2013 by Christopher Baus <christopher@baus.net>. Licensed under GPL 1.3
 
 Discourse is the new [web discussion forum software](http://discourse.org) by Jeff Atwood (et al.). Considering the 
-state of forum software, I'm confident it is going to be a breakout success. With that said it is still in a 
+state of forum software, I'm confident it is going to be a success. With that said it is still in a 
 very early state, and if you are not an expert on Linux and Rail administration, getting a Discourse site up 
-and running can be a daunting task.
-
-While I consider myself to be moderately skilled at Linux administration, this is the first Rails app I have 
-attempted to deploy and run, so now that I've been through the installation process a few times, I've decided to 
-to more formally document it for others who want to try out the software.
-
-The following will set up the *development* environment. I am still working out the specifics of 
-deploying a production installation.
+and running can be a daunting task. Although I am not a Rails developer, I personally spent a few days getting a production
+build up and running.
 
 # Warning
 
@@ -20,8 +14,7 @@ Use at your own risk.
 
 # Install on a DigitalOcean VPS using Ubuntu 12.10x64
 
-[DigitalOcean](https://www.digitalocean.com/) is offering very inexpensive VPS options based on SSDs. Please note that it has 
-been determined that to complete a full production installation of Discourse *1GB of RAM is required*. 
+[DigitalOcean](https://www.digitalocean.com/) is offering very inexpensive VPS hosts based on SSDs.
 
 # Provision your server
 
@@ -30,8 +23,10 @@ up-to-date packages. With a project as cutting edge as Discourse, this makes ins
 to download packages from source and install them, so my instructions use Ubuntu 12.10 x64 server (note:with 
 small RAM amounts, a 32bit image would probably work as well, but I'm standardizing on 64bit images). 
 
-After creating your account at DigitalOcean, create a Droplet with at least 1GB of RAM, and select the Ubuntu 
+After creating your account at DigitalOcean, create a Droplet *with at least 1GB of RAM* [1], and select the Ubuntu  
 OS image you want to use. DigitalOcean will email the root password to you.
+
+[1] A minimum of 1GB of RAM is required to compile assets for production.
 
 # Login to your server
 
