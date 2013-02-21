@@ -2,16 +2,10 @@
 Copyright 2013 by Christopher Baus <christopher@baus.net>. Licensed under GPL 1.3
 
 Discourse is the new [web discussion forum software](http://discourse.org) by Jeff Atwood (et al.). Considering the 
-state of forum software, I'm confident it is going to be a breakout success. With that said it is still in a 
+state of forum software, I'm confident it is going to be a success. With that said it is still in a 
 very early state, and if you are not an expert on Linux and Rail administration, getting a Discourse site up 
-and running can be a daunting task.
-
-While I consider myself to be moderately skilled at Linux administration, this is the first Rails app I have 
-attempted to deploy and run, so now that I've been through the installation process a few times, I've decided to 
-to more formally document it for others who want to try out the software.
-
-The following will set up the *development* environment. I am still working out the specifics of 
-deploying a production installation.
+and running can be a daunting task. Although I am not a Rails developer, I personally spent a few days getting a production
+build up and running.
 
 # Warning
 
@@ -20,9 +14,7 @@ Use at your own risk.
 
 # Install on a DigitalOcean VPS using Ubuntu 12.10x64
 
-[DigitalOcean](https://www.digitalocean.com/) is offering very inexpensive VPS options based on SSDs. While their
-offering isn't as proven as others including Linode, DigitalOcean is one of the least expensive hosting options 
-available for Discourse, so I will start there.
+[DigitalOcean](https://www.digitalocean.com/) is offering very inexpensive VPS hosts based on SSDs.
 
 # Provision your server
 
@@ -31,8 +23,10 @@ up-to-date packages. With a project as cutting edge as Discourse, this makes ins
 to download packages from source and install them, so my instructions use Ubuntu 12.10 x64 server (note:with 
 small RAM amounts, a 32bit image would probably work as well, but I'm standardizing on 64bit images). 
 
-After creating your account at DigitalOcean, select the Ubuntu OS image you want, and DigitalOcean will email the root 
-password to you.
+After creating your account at DigitalOcean, create a Droplet *with at least 1GB of RAM* [1], and select the Ubuntu  
+OS image you want to use. DigitalOcean will email the root password to you.
+
+[1] A minimum of 1GB of RAM is required to compile assets for production.
 
 # Login to your server
 
@@ -86,11 +80,11 @@ want to run as root. This includes apt-get commands to install packages.
 # Note: This installs redis 2.4. 
 # Discourse explicitly states that they require Redis 2.6. This should be addressed, 
 # and requires building Redis from source.
-admin@host:~# sudo apt-get install postgresql-9.1 postgresql-contrib-9.1 make g++ \
-libxml2-dev libxslt-dev libpq-dev ruby1.9.3 git redis-server
+admin@host:~$ sudo apt-get install postgresql-9.1 postgresql-contrib-9.1 make g++ \
+libxml2-dev libxslt-dev libpq-dev ruby1.9.3 git redis-server nginx
 # Install the Bundler app which installs Rails dependencies
-admin@host:~# sudo gem install bundler
-admin@host:~# sudo gem install therubyracer -v '0.11.3' 
+admin@host:~$ sudo gem install bundler
+admin@host:~$ sudo gem install therubyracer
 ```
 
 # Configure Postgres user account
@@ -105,7 +99,6 @@ to login to Postgres as a user with lower privledges.
 ```bash
 admin@host:~$ sudo -u postgres createuser admin -s -P
 ```
-
 
 # Pull and configure the latest version of the Discourse app
 
@@ -146,7 +139,10 @@ Start by editing the database configuration file which should be now located at 
 admin@host:~$ vi ~/discourse/config/database.yml
 ```
 
-Edit the file to add your Postgres username and password to the file as follows:
+Edit the file to add your Postgres username and password to each configuration in the file. Also add host: localhost
+to the production configuration because the production DB will also be run on the localhost in this configuration.
+
+When you are done the file should look similar to:
 
 ```
 development:
@@ -154,19 +150,48 @@ development:
   database: discourse_development
   username: admin
   password: <your_postgres_password>
+  host: localhost
   pool: 5
   timeout: 5000
   host_names:
     - "localhost"
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  adapter: postgresql
+  database: discourse_test
+  username: admin
+  password: <your_postgres_password>
+  host: localhost
+  pool: 5
+  timeout: 5000
+  host_names:
+    - test.localhost
+
+# using the test db, so jenkins can run this config
+# we need it to be in production so it minifies assets
+production:
+  adapter: postgresql
+  database: discourse_development
+  username: admin
+  password: <your_postgres_password>
+  host: localhost
+  pool: 5
+  timeout: 5000
+  host_names:
+    - production.localhost
 ```
 
-I'm not a big fan of entering the DB password as clear text in the database.yml file. If you have a better solution
+I'm not a fan of entering the DB password as clear text in the database.yml file. If you have a better solution
 to this, let me know. 
 
 # Deploy the db and start the server
 
 Now you should be ready to deploy the database and start the server.
 
+This will start the development enviroment on port 3000.
 ```
 admin@host:~$ cd ~/discourse
 # Set Rails configuration
@@ -177,4 +202,66 @@ admin@host:~$ rake db:seed_fu
 admin@host:~$ thin start
 ```
 
+# Installing the production environment
+
+## WARNING: very preliminary recipe follows
+
+# Setup the www-data account
+```bash
+admin@host:~$ sudo mkdir /var/www
+admin@host:~$ sudo chgrp www-data /var/www
+admin@host:~$ sudo chmod g+w /var/www
+```
+
+# Configure nginx
+
+```bash
+admin@host:~$ vi ~/discourse/config/nginx.sample.conf
+```
+
+Change the following lines: 
+
+```
+upstream discourse {
+  server unix:///var/www/discourse/tmp/sockets/puma0.sock;
+  server unix:///var/www/discourse/tmp/sockets/puma1.sock;
+  server unix:///var/www/discourse/tmp/sockets/puma2.sock;
+  server unix:///var/www/discourse/tmp/sockets/puma3.sock;
+}
+```
+
+to:
+```
+upstream discourse {
+  server unix:///var/www/discourse/tmp/sockets/puma.0.sock;
+  server unix:///var/www/discourse/tmp/sockets/puma.1.sock;
+  server unix:///var/www/discourse/tmp/sockets/puma.2.sock;
+  server unix:///var/www/discourse/tmp/sockets/puma.3.sock;
+}
+```
+
+I think this is a typo in the sample configuration file.
+
+```bash
+admin@host:~$ cd ~/discourse/
+admin@host:~$ sudo cp config/nginx.sample.conf /etc/nginx/sites-available/discourse.conf
+admin@host:~$ sudo ln -s /etc/nginx/sites-available/discourse.conf /etc/nginx/sites-enabled/discourse.conf
+admin@host:~$ sudo rm /etc/nginx/sites-enabled/default
+admin@host:~$ sudo service nginx start
+```
+
+# Deploy Discourse app to /var/www
+```
+admin@host:~$ vi config/initializers/secret_token.rb
+admin@host:~$ export RAILS_ENV=production
+admin@host:~$ rake assets:precompile
+admin@host:~$ sudo -u www-data cp -r discourse/ /var/www
+admin@host:~$ sudo -u www-data mkdir /var/www/discourse/tmp/sockets
+```
+
+# Start thin as daemon listening on domain sockets
+```bash
+admin@host:~$ cd /var/www/discourse
+admin@host:~$ sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/puma.sock
+```
 
