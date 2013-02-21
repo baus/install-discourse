@@ -142,7 +142,7 @@ admin@host:~$ vi ~/discourse/config/database.yml
 Edit the file to add your Postgres username and password to each configuration in the file. Also add host: localhost
 to the production configuration because the production DB will also be run on the localhost in this configuration.
 
-When you are done the file should look some like:
+When you are done the file should look similar to:
 
 ```
 development:
