@@ -66,6 +66,12 @@ root@host:~# logout
 ~$ ssh admin@<ip_addr>
 ```
 
+# Set the LC_ALL env in your ~/.profile
+
+~~~ sh
+admin@host:~$ echo 'export LC_ALL="en_US.UTF-8"' >> ~/.profile
+~~~
+
 # Use apt-get to install core system dependencies
 
 The apt-get command is used to add packages to Ubuntu (and all Debian based Linux distributions). DigitalOcean, like many VPS's, ships
