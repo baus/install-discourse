@@ -217,6 +217,7 @@ admin@host:~$ sudo chmod g+w /var/www
 ```bash
 admin@host:~$ vi ~/discourse/config/nginx.sample.conf
 ```
+The nginx sample configuration file has settings for Puma. They must be updated to work with the Thin web server.
 
 Change the following lines: 
 
@@ -239,7 +240,6 @@ upstream discourse {
 }
 ```
 
-I think this is a typo in the sample configuration file.
 
 ```bash
 admin@host:~$ cd ~/discourse/
@@ -258,7 +258,7 @@ admin@host:~$ sudo -u www-data cp -r discourse/ /var/www
 admin@host:~$ sudo -u www-data mkdir /var/www/discourse/tmp/sockets
 ```
 
-# Start thin as daemon listening on domain sockets
+# Start Thin as a daemon listening on domain sockets
 ```bash
 admin@host:~$ cd /var/www/discourse
 admin@host:~$ sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/thin.sock
