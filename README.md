@@ -267,3 +267,6 @@ admin@host:~$ sudo -u www-data thin start -e production -s4 --socket /var/www/di
 # Sendmail configuration
 
 Edit /etc/hostname
+```bash
+sudo -u www-data sidekiq -e production -d -l log/sidekiq.log
+```
