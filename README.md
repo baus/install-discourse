@@ -267,5 +267,5 @@ admin@host:~$ sudo -u www-data thin start -e production -s4 --socket /var/www/di
 
 Edit /etc/hostname
 ```bash
-sudo -u www-data sidekiq -e production -d -l log/sidekiq.log
+sudo -u www-data sidekiq -e production -d -l /var/www/discourse/log/sidekiq.log
 ```
