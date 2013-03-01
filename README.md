@@ -4,8 +4,7 @@ Copyright 2013 by Christopher Baus <christopher@baus.net>. Licensed under GPL 1.
 Discourse is the new [web discussion forum software](http://discourse.org) by Jeff Atwood (et al.). Considering the 
 state of forum software, I'm confident it is going to be a success. With that said it is still in a 
 very early state, and if you are not an expert on Linux and Rail administration, getting a Discourse site up 
-and running can be a daunting task. Although I am not a Rails developer, I personally spent a few days getting a 
-production build up and running.
+and running can be a daunting task. 
 
 # Warning
 
