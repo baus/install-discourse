@@ -264,5 +264,6 @@ admin@host:~$ sudo -u www-data mkdir /var/www/discourse/tmp/sockets
 admin@host:~$ cd /var/www/discourse
 admin@host:~$ sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/thin.sock
 ```
-# TODO
-* sendmail configuration
+# Sendmail configuration
+
+Edit /etc/hostname
