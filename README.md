@@ -287,5 +287,5 @@ u.save
 # Set site settings
 
 * Logon to site as admin
-* Edit settings page http://<yoursite>/admin/site_settings
+* Edit settings page http://\<yoursite\>/admin/site_settings
 * In particular set the notification_email which is the from address used in emails from the system.
