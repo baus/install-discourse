@@ -275,7 +275,6 @@ sudo -u www-data sidekiq -e production -d -l /var/www/discourse/log/sidekiq.log
 # Create Discourse admin account
 
 * Logon to site and create account using the application UI
-
 * Now make that account the admin:
 
 ```bash
@@ -284,3 +283,9 @@ u = User.first
 u.admin = true    
 u.save  
 ```
+
+# Set site settings
+
+* Logon to site as admin
+* Edit settings page http://<yoursite>/admin/site_settings
+* In particular set the notification_email which is the from address used in emails from the system.
