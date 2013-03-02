@@ -265,8 +265,8 @@ admin@host:~$ sudo -u www-data thin start -e production -s4 --socket /var/www/di
 ```
 # Sendmail configuration
 
-Edit /etc/hostname
-Edit /var/www/discourse/app/models/site_setting.rb setting(:notification_email, '<return email here>')
+* Edit /etc/hostname
+* Edit /var/www/discourse/app/models/site_setting.rb setting(:notification_email, '<return email here>')
 
 ```bash
 sudo -u www-data sidekiq -e production -d -l /var/www/discourse/log/sidekiq.log
