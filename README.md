@@ -17,15 +17,16 @@ Use at your own risk.
 
 # Provision your server
 
-While I'm a long time RedHat and CentOS user, I've recently made the move to Ubuntu, primarily because they offer more 
-up-to-date packages. With a project as cutting edge as Discourse, this makes installation easier as it prevents having
-to download packages from source and install them, so my instructions use Ubuntu 12.10 x64 server (note:with 
-small RAM amounts, a 32bit image would probably work as well, but I'm standardizing on 64bit images). 
+My instructions use Ubuntu 12.10 x64 server, because of its popularity and up to date packages. 
 
 After creating your account at DigitalOcean, create a Droplet *with at least 1GB of RAM* [1], and select the Ubuntu  
 OS image you want to use. DigitalOcean will email the root password to you.
 
+<Add information on DNS configuration here>
+
 [1] A minimum of 1GB of RAM is required to compile assets for production.
+
+
 
 # Login to your server
 
