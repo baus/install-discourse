@@ -271,3 +271,16 @@ admin@host:~$ sudo -u www-data thin start -e production -s4 --socket /var/www/di
 ```bash
 sudo -u www-data sidekiq -e production -d -l /var/www/discourse/log/sidekiq.log
 ```
+
+# Create Discourse admin account
+
+* Logon to site and create account using the application UI
+
+* Now make that account the admin:
+
+```bash
+sudo -u www-data rails c     
+u = User.first    
+u.admin = true    
+u.save  
+```
