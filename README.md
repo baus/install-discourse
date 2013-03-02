@@ -266,7 +266,6 @@ admin@host:~$ sudo -u www-data thin start -e production -s4 --socket /var/www/di
 # Sendmail configuration
 
 * Edit /etc/hostname
-* Edit /var/www/discourse/app/models/site_setting.rb setting(:notification_email, '<return email here>')
 
 ```bash
 sudo -u www-data sidekiq -e production -d -l /var/www/discourse/log/sidekiq.log
@@ -289,3 +288,4 @@ u.save
 * Logon to site as admin
 * Edit settings page http://\<yoursite\>/admin/site_settings
 * In particular set the notification_email which is the from address used in emails from the system.
+** The default value for this setting is in: app/models/site_setting.rb
