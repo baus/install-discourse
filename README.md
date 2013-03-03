@@ -19,14 +19,15 @@ I decided on Ubuntu 12.10 x64 since it is the most recent Ubuntu release with th
 concerned about the long term stability of your systems, you may want to consider Ubuntu 12.04 LTS which has 
 gaurenteed support until 2017, but the installation instructions are a bit different do to availability of certain packages.
 
-Before creating your DigitalOcean instance, you should register the domain name you want to use for your forum. I'm going
-to use discoursetest.org for this instance.
+Before creating your DigitalOcean instance, you should register the domain name you want to use for your forum. I'm using 
+discoursetest.org for this instance, and forum.discoursetest.org as the FQDN.  
 
 After creating your account at DigitalOcean, create a Droplet *with at least 1GB of RAM* [1], and select the Ubuntu  
-OS image you want to use. DigitalOcean will email the root password to you.
+OS image you want to use. I set the Hostname to forum.discoursetest.org. 
 
-The email will contain the IP address for your instance. You should go to your domain registrar and set the DNS records
-to point to your new IP.
+DigitalOcean will email the IP address and root password to you. You should go to your domain registrar and set the 
+DNS records to point to your new IP. I've set both the * and @ records to point to the VPS IP. This allows the root 
+domain and all sub-domains to resolve to VPS instance's IP address. 
 
 [1] A minimum of 1GB of RAM is required to compile assets for production.
 
@@ -85,11 +86,20 @@ want to run as root. This includes apt-get commands to install packages.
 
 ```bash
 # Install required packages
-# Note: This installs redis 2.4. 
-# Discourse explicitly states that they require Redis 2.6. This should be addressed, 
-# and requires building Redis from source.
 admin@host:~$ sudo apt-get install postgresql-9.1 postgresql-contrib-9.1 make g++ \
 libxml2-dev libxslt-dev libpq-dev ruby1.9.3 git redis-server nginx postfix
+```
+During the installation procedure, you will be prompted for Postfix configuration information. Postfix is the
+mailer we will use to send mail from Discourse. Just keep the default "Internet Site."
+
+At the next prompt just enter your domain name. In my test case this is discoursetest.org.
+
+
+
+TODO: This installs redis 2.4. Discourse explicitly states that they require Redis 2.6, but this requires installing
+from source.
+
+
 # Install the Bundler app which installs Rails dependencies
 admin@host:~$ sudo gem install bundler
 admin@host:~$ sudo gem install therubyracer
