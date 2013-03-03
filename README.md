@@ -31,15 +31,6 @@ domain and all sub-domains to resolve to VPS instance's IP address.
 
 [1] A minimum of 1GB of RAM is required to compile assets for production.
 
-# Editing configuration files
-
-At various points in the installation procedure, you will need to edit configuration files with a text editor.
-Vi is installed by default and is the de facto standard editor used by sys admins, so I use vi for any editing commands,
-but you may want to consider installing the editor of your choice. I like emacs, so I installed it with: 
-
-```
-admin@host:~$ sudo apt-get install emacs
-```
 
 # Login to your server
 
@@ -108,15 +99,29 @@ At the next prompt just enter your domain name. In my test case this is discours
 TODO: This installs redis 2.4. Discourse explicitly states that they require Redis 2.6, but this requires installing
 from source.
 
+# Editing configuration files
+
+At various points in the installation procedure, you will need to edit configuration files with a text editor.
+Vi is installed by default and is the de facto standard editor used by admins, so I use vi for any editing commands,
+but you may want to consider installing the editor of your choice. I like emacs, so I installed it with: 
+
+```
+admin@host:~$ sudo apt-get install emacs
+```
+
 # Set the host name
 
 DigitalOcean's provisioning procedure doesn't correctly set the hostname when the instance is created, 
 which is inconvient since they know your hostname at the point the instance is created. I'd recommend 
 editing /etc/hosts to correctly contain your hostname.
 
+```bash
+admin@host:~$ vi /etc/hosts
+```
+
 The first line of my /etc/hosts file looks like:
 
-```
+```bash
 127.0.0.1  forum.discoursetest.org forum localhost
 ```
 
