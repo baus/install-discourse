@@ -89,15 +89,28 @@ want to run as root. This includes apt-get commands to install packages.
 admin@host:~$ sudo apt-get install postgresql-9.1 postgresql-contrib-9.1 make g++ \
 libxml2-dev libxslt-dev libpq-dev ruby1.9.3 git redis-server nginx postfix
 ```
+
 During the installation procedure, you will be prompted for Postfix configuration information. Postfix is the
 mailer we will use to send mail from Discourse. Just keep the default "Internet Site."
 
 At the next prompt just enter your domain name. In my test case this is discoursetest.org.
 
-
-
 TODO: This installs redis 2.4. Discourse explicitly states that they require Redis 2.6, but this requires installing
 from source.
+
+# Set the host name
+
+DigitalOcean's provisioning procedure doesn't correctly set the hostname when the instance is created, 
+which is inconvient since they know your hostname at the point the instance is created. I'd recommend 
+editing /etc/hosts to correctly contain your hostname.
+
+The first line of my /etc/hosts file looks like:
+
+```
+127.0.0.1  forum.discoursetest.org forum localhost
+```
+
+You should replace discoursetest.org with your own domain name. 
 
 
 # Install the Bundler app which installs Rails dependencies
