@@ -325,9 +325,9 @@ u.save
 ```
 Todo: create script to create the admin account
 
-# Set site settings
+# Edit site settings
 
-* Logon to site as admin
-* Edit settings page http://\<yoursite\>/admin/site_settings
+* Logon to site with the admin account
+* Edit settings page http://discoursetest.org/admin/site_settings
 * In particular set the notification_email which is the from address used in emails from the system.
 ** The default value for this setting is in: app/models/site_setting.rb
