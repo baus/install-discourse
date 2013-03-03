@@ -54,9 +54,11 @@ root@host:~# passwd
 
 # Create a user account
 
-It is bad practice to admin your system from the root account. 
-Create an administrative account, and add it to the sudo group, so the account can 
-make system changes with the sudo command. In this case, I'm going to call the new users "admin."
+It is poor practice to admin your system from the root account. Create an administrative account, and add 
+it to the sudo group, so the account can make system changes with the sudo command. In this case, I'm going 
+to call the new user "admin."
+
+Adding the user to the sudo group will allow the user to perform tasks as root using the sudo command. 
 
 ```bash
 root@host:~# adduser admin
@@ -67,8 +69,10 @@ root@host:~# adduser admin sudo
 ```bash
 root@host:~# logout
 # now back at the local terminal prompt
-~$ ssh admin@<ip_addr>
+~$ ssh admin@discoursetest.org
 ```
+
+Todo: should consider removing root SSH access at this point
 
 # Use apt-get to install core system dependencies
 
