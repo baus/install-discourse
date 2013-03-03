@@ -6,38 +6,41 @@ state of forum software, and Jeff's previous success with StackOverflow, I'm con
 With that said it is still in a very early state, and if you are not an expert on Linux and Ruby on Rails administration, 
 getting a Discourse site up and running can be a daunting task. 
 
-Hopefully the document will be useful for someone who has some Linux administration experience, and wants to run and
-administrate their own Discourse server. 
+Hopefully the document will be useful for someone who has some Linux administration experience and wants to run and
+administrate their own Discourse server. I am erring on the side of verbosity.
 
-While these instructions should work fine on most Ubuntu 
 
 # Install on a DigitalOcean VPS using Ubuntu 12.10x64
 
+While these instructions should work fine on most Ubuntu installations, I have explicitly tested them on DigitalOcean. 
+DigitalOcearn currently offers low cost VPS hosting, but I can not vouch for their reliability. 
 
-[DigitalOcean](https://www.digitalocean.com/) is offering very inexpensive VPS hosts based on SSDs. 
+I decided on Ubuntu 12.10 x64 since it is the most recent Ubuntu release with the most up to date packages. If you 
+concerned about the long term stability of your systems, you may want to consider Ubuntu 12.04 LTS which has 
+gaurenteed support until 2017, but the installation instructions are a bit different do to availability of certain packages.
 
-# Provision your server
-
-My instructions use Ubuntu 12.10 x64 server, because of its popularity and up to date packages. 
+Before creating your DigitalOcean instance, you should register the domain name you want to use for your forum. I'm going
+to use discoursetest.org for this instance.
 
 After creating your account at DigitalOcean, create a Droplet *with at least 1GB of RAM* [1], and select the Ubuntu  
 OS image you want to use. DigitalOcean will email the root password to you.
 
-<Add information on DNS configuration here>
+The email will contain the IP address for your instance. You should go to your domain registrar and set the DNS records
+to point to your new IP.
 
 [1] A minimum of 1GB of RAM is required to compile assets for production.
 
-
-
 # Login to your server
 
-If you are using OS X or Linux, fire up a terminal ssh to your new server which be at the IP address that DigitialOcean 
-has provided. Windows users should consider installing [Putty](http://putty.org/) to access your new server.
+I will use discoursetest.org when a domain name is required in the installation. You should replace 
+discoursetest.org with your own domain name. If you are using OS X or Linux, start a terminal and ssh to 
+your new server. Windows users should consider installing [Putty](http://putty.org/) to access your new server.
 
 ```bash
-# From your local shell
-~$ ssh root@<ip_addr>
-# Enter your root password
+# From your local shell on OS X or Linux
+# Remember to replace discoursetest.org with your own domain.
+~$ ssh root@discoursetest.org
+# Enter the root password provided by DigitalOcean
 ```
 
 # Change your root password
