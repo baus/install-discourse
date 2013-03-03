@@ -1,19 +1,20 @@
-# Overview
-Copyright 2013 by Christopher Baus <christopher@baus.net>. Licensed under GPL 1.3
+# Installing Discourse on Ubuntu and Digital Ocean
+Copyright 2013 by Christopher Baus <christopher@baus.net>. Licensed under GPL 2.0
 
-Discourse is the new [web discussion forum software](http://discourse.org) by Jeff Atwood (et al.). Considering the 
-state of forum software, I'm confident it is going to be a success. With that said it is still in a 
-very early state, and if you are not an expert on Linux and Rail administration, getting a Discourse site up 
-and running can be a daunting task. 
+Discourse is [web discussion forum software](http://discourse.org) by Jeff Atwood (et al.). Considering the 
+state of forum software, and Jeff's previous success with StackOverflow, I'm confident it is going to be a success. 
+With that said it is still in a very early state, and if you are not an expert on Linux and Ruby on Rails administration, 
+getting a Discourse site up and running can be a daunting task. 
 
-# Warning
+Hopefully the document will be useful for someone who has some Linux administration experience, and wants to run and
+administrate their own Discourse server. 
 
-Not only is Discourse new software, these instructions have been pulled together after a couple days of research. 
-Use at your own risk. 
+While these instructions should work fine on most Ubuntu 
 
 # Install on a DigitalOcean VPS using Ubuntu 12.10x64
 
-[DigitalOcean](https://www.digitalocean.com/) is offering very inexpensive VPS hosts based on SSDs.
+
+[DigitalOcean](https://www.digitalocean.com/) is offering very inexpensive VPS hosts based on SSDs. 
 
 # Provision your server
 
