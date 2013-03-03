@@ -56,11 +56,11 @@ root@host:~# passwd
 
 # Create a user account
 
-It is poor practice to admin your system from the root account. Create an administrative account, and add 
-it to the sudo group, so the account can make system changes with the sudo command. In this case, I'm going 
-to call the new user "admin."
+It is poor practice to admin your system from the root account. Create an administrative account. I'm going to 
+call the new user "admin."
 
-Adding the user to the sudo group will allow the user to perform tasks as root using the sudo command. 
+Adding the user to the sudo group will allow the user to perform tasks as root using the 
+[sudo](https://help.ubuntu.com/community/RootSudo) command. 
 
 ```bash
 root@host:~# adduser admin
@@ -81,7 +81,7 @@ Todo: should consider removing root SSH access at this point
 The apt-get command is used to add packages to Ubuntu (and all Debian based Linux distributions). DigitalOcean, like many VPS's, ships
 with a limited Ubuntu configuration, so you will have to install many of the software the dependencies yourself.
 
-To install system packages, you have to have root privledges. Since the admin account is part of the sudo group, the
+To install system packages, you must have root privledges. Since the admin account is part of the sudo group, the
 admin account can run commands with root privledges by using the sudo command. Just prepend sudo to any commands you
 want to run as root. This includes apt-get commands to install packages.
 
