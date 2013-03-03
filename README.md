@@ -31,6 +31,16 @@ domain and all sub-domains to resolve to VPS instance's IP address.
 
 [1] A minimum of 1GB of RAM is required to compile assets for production.
 
+# Editing configuration files
+
+At various points in the installation procedure, you will need to edit configuration files with a text editor.
+Vi is installed by default and is the de facto standard editor used by sys admins, so I use vi for any editing commands,
+but you may want to consider installing the editor of your choice. I like emacs, so I installed it with: 
+
+```
+admin@host:~$ sudo apt-get install emacs
+```
+
 # Login to your server
 
 I will use discoursetest.org when a domain name is required in the installation. You should replace 
@@ -158,12 +168,7 @@ admin@host:~$ cp ./database.yml.sample ./database.yml
 admin@host:~$ cp ./redis.yml.sample ./redis.yml
 ```
 
-Now you need to edit the configuration files and apply your own settings. To do this you should use your favorite 
-text editor. Vi is installed by default, but I like emacs, so I installed it with: 
-
-```
-admin@host:~$ sudo apt-get install emacs
-```
+Now you need to edit the configuration files and apply your own settings. 
 
 
 Start by editing the database configuration file which should be now located at ~/discourse/config/database.yml
