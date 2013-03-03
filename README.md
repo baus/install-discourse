@@ -323,7 +323,7 @@ u = User.first
 u.admin = true    
 u.save  
 ```
-Todo: create script to create the admin account
+Todo: add script to create the admin account
 
 # Edit site settings
 
