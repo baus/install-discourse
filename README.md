@@ -91,7 +91,7 @@ admin@host:~$ sudo apt-get install postgresql-9.1 postgresql-contrib-9.1 make g+
 libxml2-dev libxslt-dev libpq-dev ruby1.9.3 git redis-server nginx postfix
 ```
 
-During the installation procedure, you will be prompted for Postfix configuration information. Postfix is the
+During the installation, you will be prompted for Postfix configuration information. Postfix is the
 mailer we will use to send mail from Discourse. Just keep the default "Internet Site."
 
 At the next prompt just enter your domain name. In my test case this is discoursetest.org.
@@ -120,7 +120,6 @@ admin@host:~$ vi /etc/hosts
 ```
 
 The first line of my /etc/hosts file looks like:
-
 ```bash
 127.0.0.1  forum.discoursetest.org forum localhost
 ```
