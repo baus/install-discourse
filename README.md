@@ -149,13 +149,13 @@ admin@host:~$ sudo -u postgres createuser admin -s -P
 
 # Pull and configure the latest version of the Discourse app
 
-Now we are ready install the actual Discourse application. Note this step shows how to pull the latest version
-of the Discourse application from the main development branch. At this point, there a lot of changes occuring
-in this branch, so changes may occur at ANY time.
+Now we are ready install the actual Discourse application. This will pull a copy of the Discourse app from my own branch. 
+The advantage of using this branch is that it has been tested with these instructions, but it may fall behind the master
+which is rapidly changing. 
 
 ```bash
 # Pull the latest version from github.
-admin@host:~$ git clone https://github.com/discourse/discourse.git
+admin@host:~$ git clone https://github.com/baus/discourse.git
 admin@host:~$ cd discourse
 # Now install the application dependencies using bundle
 admin@host:~$ bundle install
