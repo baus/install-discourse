@@ -306,12 +306,10 @@ admin@host:~$ sudo -u www-data mkdir /var/www/discourse/tmp/sockets
 admin@host:~$ cd /var/www/discourse
 admin@host:~$ sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/thin.sock
 ```
-# Sendmail configuration
-
-* Edit /etc/hostname
+# Start Sidekiq
 
 ```bash
-sudo -u www-data sidekiq -e production -d -l /var/www/discourse/log/sidekiq.log
+admin@host:~$ sudo -u www-data sidekiq -e production -d -l /var/www/discourse/log/sidekiq.log
 ```
 
 # Create Discourse admin account
@@ -325,6 +323,7 @@ u = User.first
 u.admin = true    
 u.save  
 ```
+Todo: create script to create the admin account
 
 # Set site settings
 
