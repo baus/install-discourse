@@ -114,6 +114,8 @@ You should replace discoursetest.org with your own domain name.
 
 
 # Install the Bundler app which installs Rails dependencies
+
+```bash
 admin@host:~$ sudo gem install bundler
 admin@host:~$ sudo gem install therubyracer
 ```
