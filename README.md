@@ -66,7 +66,7 @@ Adding the user to the sudo group will allow the user to perform tasks as root u
 root@host:~# adduser admin
 root@host:~# adduser admin sudo
 ```
-# Logout and log back in using the admin account
+# Login using the admin account
 
 ```bash
 root@host:~# logout
