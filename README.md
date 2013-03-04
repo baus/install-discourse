@@ -63,15 +63,15 @@ Adding the user to the sudo group will allow the user to perform tasks as root u
 [sudo](https://help.ubuntu.com/community/RootSudo) command. 
 
 ```bash
-root@host:~# adduser admin
-root@host:~# adduser admin sudo
+~# adduser admin
+~# adduser admin sudo
 ```
 # Login using the admin account
 
 ```bash
-root@host:~# logout
+~# logout
 # now back at the local terminal prompt
-~$ ssh admin@discoursetest.org
+$ ssh admin@discoursetest.org
 ```
 
 Todo: should consider removing root SSH access at this point
@@ -87,7 +87,7 @@ want to run as root. This includes apt-get commands to install packages.
 
 ```bash
 # Install required packages
-admin@host:~$ sudo apt-get install postgresql-9.1 postgresql-contrib-9.1 make g++ \
+$ sudo apt-get install postgresql-9.1 postgresql-contrib-9.1 make g++ \
 libxml2-dev libxslt-dev libpq-dev ruby1.9.3 git redis-server nginx postfix
 ```
 
@@ -106,7 +106,7 @@ Vi is installed by default and is the de facto standard editor used by admins, s
 but you may want to consider installing the editor of your choice. I like emacs, so I installed it with: 
 
 ```
-admin@host:~$ sudo apt-get install emacs
+$ sudo apt-get install emacs
 ```
 
 # Set the host name
@@ -116,7 +116,7 @@ which is inconvient since they know your hostname at the point the instance is c
 editing /etc/hosts to correctly contain your hostname.
 
 ```bash
-admin@host:~$ vi /etc/hosts
+$ vi /etc/hosts
 ```
 
 The first line of my /etc/hosts file looks like:
@@ -130,8 +130,8 @@ You should replace discoursetest.org with your own domain name.
 # Install the Bundler app which installs Rails dependencies
 
 ```bash
-admin@host:~$ sudo gem install bundler
-admin@host:~$ sudo gem install therubyracer -v '0.11.3'
+$ sudo gem install bundler
+$ sudo gem install therubyracer -v '0.11.3'
 ```
 
 # Configure Postgres user account
@@ -144,7 +144,7 @@ Future revisions of this document may offer alternatives for creating the Postgr
 to login to Postgres as a user with lower privledges.
 
 ```bash
-admin@host:~$ sudo -u postgres createuser admin -s -P
+$ sudo -u postgres createuser admin -s -P
 ```
 
 # Pull and configure the latest version of the Discourse app
@@ -155,10 +155,10 @@ which is rapidly changing.
 
 ```bash
 # Pull the latest version from github.
-admin@host:~$ git clone https://github.com/baus/discourse.git
-admin@host:~$ cd discourse
+$ git clone https://github.com/baus/discourse.git
+$ cd discourse
 # Now install the application dependencies using bundle
-admin@host:~$ bundle install
+$ bundle install
 ```
 
 # Set Discourse application settings
@@ -167,9 +167,9 @@ There are sample configuration files now included in the master branch, so you n
 modify them with your own changes.
 
 ```
-admin@host:~$ cd ~/discourse/config
-admin@host:~$ cp ./database.yml.sample ./database.yml
-admin@host:~$ cp ./redis.yml.sample ./redis.yml
+$ cd ~/discourse/config
+$ cp ./database.yml.sample ./database.yml
+$ cp ./redis.yml.sample ./redis.yml
 ```
 
 Now you need to edit the configuration files and apply your own settings. 
@@ -178,7 +178,7 @@ Now you need to edit the configuration files and apply your own settings.
 Start by editing the database configuration file which should be now located at ~/discourse/config/database.yml
 
 ```bash
-admin@host:~$ vi ~/discourse/config/database.yml
+$ vi ~/discourse/config/database.yml
 ```
 
 Edit the file to add your Postgres username and password to each configuration in the file. Also add host: localhost
@@ -235,13 +235,13 @@ Now you should be ready to deploy the database and start the server.
 
 This will start the development enviroment on port 3000.
 ```
-admin@host:~$ cd ~/discourse
+$ cd ~/discourse
 # Set Rails configuration
-admin@host:~$ export RAILS_ENV=development
-admin@host:~$ rake db:create
-admin@host:~$ rake db:migrate
-admin@host:~$ rake db:seed_fu
-admin@host:~$ thin start
+$ export RAILS_ENV=development
+$ rake db:create
+$ rake db:migrate
+$ rake db:seed_fu
+$ thin start
 ```
 
 # Installing the production environment
@@ -250,15 +250,15 @@ admin@host:~$ thin start
 
 # Setup the www-data account
 ```bash
-admin@host:~$ sudo mkdir /var/www
-admin@host:~$ sudo chgrp www-data /var/www
-admin@host:~$ sudo chmod g+w /var/www
+$ sudo mkdir /var/www
+$ sudo chgrp www-data /var/www
+$ sudo chmod g+w /var/www
 ```
 
 # Configure nginx
 
 ```bash
-admin@host:~$ vi ~/discourse/config/nginx.sample.conf
+$ vi ~/discourse/config/nginx.sample.conf
 ```
 The nginx sample configuration file has settings for Puma. They must be updated to work with the Thin web server.
 
@@ -285,31 +285,31 @@ upstream discourse {
 
 
 ```bash
-admin@host:~$ cd ~/discourse/
-admin@host:~$ sudo cp config/nginx.sample.conf /etc/nginx/sites-available/discourse.conf
-admin@host:~$ sudo ln -s /etc/nginx/sites-available/discourse.conf /etc/nginx/sites-enabled/discourse.conf
-admin@host:~$ sudo rm /etc/nginx/sites-enabled/default
-admin@host:~$ sudo service nginx start
+$ cd ~/discourse/
+$ sudo cp config/nginx.sample.conf /etc/nginx/sites-available/discourse.conf
+$ sudo ln -s /etc/nginx/sites-available/discourse.conf /etc/nginx/sites-enabled/discourse.conf
+$ sudo rm /etc/nginx/sites-enabled/default
+$ sudo service nginx start
 ```
 
 # Deploy Discourse app to /var/www
 ```
-admin@host:~$ vi config/initializers/secret_token.rb
-admin@host:~$ export RAILS_ENV=production
-admin@host:~$ rake assets:precompile
-admin@host:~$ sudo -u www-data cp -r discourse/ /var/www
-admin@host:~$ sudo -u www-data mkdir /var/www/discourse/tmp/sockets
+$ vi config/initializers/secret_token.rb
+$ export RAILS_ENV=production
+$ rake assets:precompile
+$ sudo -u www-data cp -r discourse/ /var/www
+$ sudo -u www-data mkdir /var/www/discourse/tmp/sockets
 ```
 
 # Start Thin as a daemon listening on domain sockets
 ```bash
-admin@host:~$ cd /var/www/discourse
-admin@host:~$ sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/thin.sock
+$ cd /var/www/discourse
+$ sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/thin.sock
 ```
 # Start Sidekiq
 
 ```bash
-admin@host:~$ sudo -u www-data sidekiq -e production -d -l /var/www/discourse/log/sidekiq.log
+$ sudo -u www-data sidekiq -e production -d -l /var/www/discourse/log/sidekiq.log
 ```
 
 # Create Discourse admin account
