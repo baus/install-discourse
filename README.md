@@ -1,4 +1,4 @@
-# Installing Discourse on Ubuntu and Digital Ocean
+# Installing Discourse on Ubuntu and DigitalOcean
 Copyright 2013 by Christopher Baus <christopher@baus.net>. Licensed under GPL 2.0
 
 Discourse is [web discussion forum software](http://discourse.org) by Jeff Atwood (et al.). Considering the 
