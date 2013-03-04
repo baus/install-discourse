@@ -276,7 +276,7 @@ $ sudo service nginx start
 $ vi config/initializers/secret_token.rb
 $ export RAILS_ENV=production
 $ rake assets:precompile
-$ sudo -u www-data cp -r discourse/ /var/www
+$ sudo -u www-data cp -r ~/discourse/ /var/www
 $ sudo -u www-data mkdir /var/www/discourse/tmp/sockets
 ```
 
