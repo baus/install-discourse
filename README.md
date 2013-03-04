@@ -229,7 +229,7 @@ production:
 I'm not a fan of entering the DB password as clear text in the database.yml file. If you have a better solution
 to this, let me know. 
 
-# Deploy the db and start the server
+### Deploy the db and start the server
 
 Now you should be ready to deploy the database and start the server.
 
@@ -246,7 +246,7 @@ $ thin start
 
 I tested the configuration by going to http://discoursetest.org:3000/
 
-# Installing the production environment
+## Installing the production environment
 
 ## WARNING: very preliminary instructions follows
 
