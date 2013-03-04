@@ -317,3 +317,4 @@ Todo: add script to create the admin account
 * Add Sam Saffron's Ruby GC tunings
 * Add thin and sidekiq as init scripts. I find this cleaner than using bluepill
 * Create chef script based on the installation procedure
+* Lots of info on server configuration here: http://news.ycombinator.com/item?id=5316093
