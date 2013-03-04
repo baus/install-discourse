@@ -259,31 +259,8 @@ $ sudo chmod g+w /var/www
 
 # Configure nginx
 
-```bash
-$ vi ~/discourse/config/nginx.sample.conf
-```
-The nginx sample configuration file has settings for Puma. They must be updated to work with the Thin web server.
-
-Change the following lines: 
-
-```
-upstream discourse {
-  server unix:///var/www/discourse/tmp/sockets/puma0.sock;
-  server unix:///var/www/discourse/tmp/sockets/puma1.sock;
-  server unix:///var/www/discourse/tmp/sockets/puma2.sock;
-  server unix:///var/www/discourse/tmp/sockets/puma3.sock;
-}
-```
-
-to:
-```
-upstream discourse {
-  server unix:///var/www/discourse/tmp/sockets/thin.0.sock;
-  server unix:///var/www/discourse/tmp/sockets/thin.1.sock;
-  server unix:///var/www/discourse/tmp/sockets/thin.2.sock;
-  server unix:///var/www/discourse/tmp/sockets/thin.3.sock;
-}
-```
+Note: I've made some minor modifications to the nginx configuration in the discourse master branch to simplify production
+deployment. 
 
 
 ```bash
