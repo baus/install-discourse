@@ -10,7 +10,7 @@ Hopefully the document will be useful for someone who has some Linux administrat
 administrate their own Discourse server. I am erring on the side of verbosity.
 
 
-# Install on a DigitalOcean VPS using Ubuntu 12.10x64
+### Create DigitalOcean VPS with Ubuntu 12.10x64
 
 While these instructions should work fine on most Ubuntu installations, I have explicitly tested them on DigitalOcean. 
 DigitalOcearn currently offers low cost VPS hosting, but I can not vouch for their reliability. 
@@ -32,7 +32,7 @@ domain and all sub-domains to resolve to VPS instance's IP address.
 [1] A minimum of 1GB of RAM is required to compile assets for production.
 
 
-# Login to your server
+### Login to your server
 
 I will use discoursetest.org when a domain name is required in the installation. You should replace 
 discoursetest.org with your own domain name. If you are using OS X or Linux, start a terminal and ssh to 
@@ -45,7 +45,7 @@ your new server. Windows users should consider installing [Putty](http://putty.o
 # Enter the root password provided by DigitalOcean
 ```
 
-# Change your root password
+### Change your root password
 
 Since your password has been emailed to you in clear text, you should immediately change your password for security reasons.
 
@@ -54,7 +54,7 @@ root@host:~# passwd
 # # Enter your new password
 ```
 
-# Create a user account
+### Create a user account
 
 It is poor practice to admin your system from the root account. Create an administrative account. I'm going to 
 call the new user "admin."
@@ -66,7 +66,7 @@ Adding the user to the sudo group will allow the user to perform tasks as root u
 ~# adduser admin
 ~# adduser admin sudo
 ```
-# Login using the admin account
+### Login using the admin account
 
 ```bash
 ~# logout
@@ -76,7 +76,7 @@ $ ssh admin@discoursetest.org
 
 Todo: should consider removing root SSH access at this point
 
-# Use apt-get to install core system dependencies
+### Use apt-get to install core system dependencies
 
 The apt-get command is used to add packages to Ubuntu (and all Debian based Linux distributions). DigitalOcean, like many VPS's, ships
 with a limited Ubuntu configuration, so you will have to install many of the software the dependencies yourself.
@@ -99,7 +99,7 @@ At the next prompt just enter your domain name. In my test case this is discours
 TODO: This installs redis 2.4. Discourse explicitly states that they require Redis 2.6, but this requires installing
 from source.
 
-# Editing configuration files
+### Editing configuration files
 
 At various points in the installation procedure, you will need to edit configuration files with a text editor.
 Vi is installed by default and is the de facto standard editor used by admins, so I use vi for any editing commands,
@@ -109,7 +109,7 @@ but you may want to consider installing the editor of your choice. I like emacs,
 $ sudo apt-get install emacs
 ```
 
-# Set the host name
+### Set the host name
 
 DigitalOcean's provisioning procedure doesn't correctly set the hostname when the instance is created, 
 which is inconvient since they know your hostname at the point the instance is created. I'd recommend 
@@ -127,14 +127,14 @@ The first line of my /etc/hosts file looks like:
 You should replace discoursetest.org with your own domain name. 
 
 
-# Install the Bundler app which installs Rails dependencies
+### Install the Bundler app which installs Rails dependencies
 
 ```bash
 $ sudo gem install bundler
 $ sudo gem install therubyracer -v '0.11.3'
 ```
 
-# Configure Postgres user account
+### Configure Postgres user account
 
 Discourse uses the Postgres database to store forum data. The configuration procedure is similar to MySQL, but 
 I am a Postgres newbie, so if you have improvements to this aspect of the installation procedure, please let me know.
@@ -147,7 +147,7 @@ to login to Postgres as a user with lower privledges.
 $ sudo -u postgres createuser admin -s -P
 ```
 
-# Pull and configure the latest version of the Discourse app
+### Pull and configure the latest version of the Discourse app
 
 Now we are ready install the actual Discourse application. This will pull a copy of the Discourse app from my own branch. 
 The advantage of using this branch is that it has been tested with these instructions, but it may fall behind the master
@@ -161,7 +161,7 @@ $ cd discourse
 $ bundle install
 ```
 
-# Set Discourse application settings
+### Set Discourse application settings
 Now you have set the Discourse application settings. The configuration files are in a directory called "config"
 There are sample configuration files now included in the master branch, so you need to copy these files and
 modify them with your own changes.
@@ -233,7 +233,7 @@ to this, let me know.
 
 Now you should be ready to deploy the database and start the server.
 
-This will start the development enviroment on port 3000.
+This will start the development environment on port 3000.
 ```
 $ cd ~/discourse
 # Set Rails configuration
@@ -243,6 +243,8 @@ $ rake db:migrate
 $ rake db:seed_fu
 $ thin start
 ```
+
+I tested the configuration by going to http://discoursetest.org:3000/
 
 # Installing the production environment
 
