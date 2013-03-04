@@ -248,16 +248,16 @@ I tested the configuration by going to http://discoursetest.org:3000/
 
 # Installing the production environment
 
-## WARNING: very preliminary recipe follows
+## WARNING: very preliminary instructions follows
 
-# Setup the www-data account
+### Setup the www-data account
 ```bash
 $ sudo mkdir /var/www
 $ sudo chgrp www-data /var/www
 $ sudo chmod g+w /var/www
 ```
 
-# Configure nginx
+### Configure nginx
 
 Note: I've made some minor modifications to the nginx configuration in the discourse master branch to simplify production
 deployment. 
@@ -271,7 +271,7 @@ $ sudo rm /etc/nginx/sites-enabled/default
 $ sudo service nginx start
 ```
 
-# Deploy Discourse app to /var/www
+### Deploy Discourse app to /var/www
 ```
 $ vi config/initializers/secret_token.rb
 $ export RAILS_ENV=production
@@ -280,18 +280,18 @@ $ sudo -u www-data cp -r ~/discourse/ /var/www
 $ sudo -u www-data mkdir /var/www/discourse/tmp/sockets
 ```
 
-# Start Thin as a daemon listening on domain sockets
+### Start Thin as a daemon listening on domain sockets
 ```bash
 $ cd /var/www/discourse
 $ sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/thin.sock
 ```
-# Start Sidekiq
+### Start Sidekiq
 
 ```bash
 $ sudo -u www-data sidekiq -e production -d -l /var/www/discourse/log/sidekiq.log
 ```
 
-# Create Discourse admin account
+### Create Discourse admin account
 
 * Logon to site and create account using the application UI
 * Now make that account the admin:
@@ -304,8 +304,12 @@ u.save
 ```
 Todo: add script to create the admin account
 
-# Edit site settings
+### Edit site settings
 
 * Logon to site with the admin account
 * Edit settings page http://discoursetest.org/admin/site_settings
 * In particular set the notification_email which is the from address used in emails from the system. The default value for this setting is in: app/models/site_setting.rb
+
+### TODO
+* Correct host name in url in emails
+* Setup social network login
