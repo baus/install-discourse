@@ -308,5 +308,4 @@ Todo: add script to create the admin account
 
 * Logon to site with the admin account
 * Edit settings page http://discoursetest.org/admin/site_settings
-* In particular set the notification_email which is the from address used in emails from the system.
-** The default value for this setting is in: app/models/site_setting.rb
+* In particular set the notification_email which is the from address used in emails from the system. The default value for this setting is in: app/models/site_setting.rb
