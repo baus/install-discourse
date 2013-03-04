@@ -311,5 +311,9 @@ Todo: add script to create the admin account
 * In particular set the notification_email which is the from address used in emails from the system. The default value for this setting is in: app/models/site_setting.rb
 
 ### TODO
+* Add more information about email configuration and start sidekiq when testing development installation. Should the admin account be set when testing the development server?
 * Correct host name in url in emails
-* Setup social network login
+* Setup social network login (Is it possible to disable this feature?)
+* Add Sam Saffron's Ruby GC tunings
+* Add thin and sidekiq as init scripts. I find this cleaner than using bluepill
+* Create chef script based on the installation procedure
