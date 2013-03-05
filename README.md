@@ -259,10 +259,6 @@ $ sudo chmod g+w /var/www
 
 ### Configure nginx
 
-Note: I've made some minor modifications to the nginx configuration in the discourse master branch to simplify production
-deployment. 
-
-
 ```bash
 $ cd ~/discourse/
 $ sudo cp config/nginx.sample.conf /etc/nginx/sites-available/discourse.conf
