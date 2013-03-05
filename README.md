@@ -305,10 +305,11 @@ u.save
 Todo: add script to create the admin account
 
 ### Edit site settings
-
+The default values are in: app/models/site_setting.rb
 * Logon to site with the admin account
 * Edit settings page http://discoursetest.org/admin/site_settings
-* In particular set the notification_email which is the from address used in emails from the system. The default value for this setting is in: app/models/site_setting.rb
+* Set the notification_email. It is the from address used in emails from the system. I set it to info@discoursetest.org.
+* Set force_hostname to your domain name. I set it to discoursetest.org. This is used when generating URLs in emails.
 
 ### TODO
 * Add more information about email configuration and start sidekiq when testing development installation. Should the admin account be set when testing the development server?
