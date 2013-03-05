@@ -307,7 +307,7 @@ Todo: add script to create the admin account
 ### Edit site settings
 The default values are in: app/models/site_setting.rb
 * Logon to site with the admin account
-* Edit settings page http://discoursetest.org/admin/site_settings
+* Go to the site settings page: http://discoursetest.org/admin/site_settings
 * Set the notification_email. It is the from address used in emails from the system. I set it to info@discoursetest.org.
 * Set force_hostname to your domain name. I set it to discoursetest.org. This is used when generating URLs in emails.
 
