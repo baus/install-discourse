@@ -312,8 +312,8 @@ The default values are in: app/models/site_setting.rb
 * Set force_hostname to your domain name. I set it to discoursetest.org. This is used when generating URLs in emails.
 
 ### TODO
+* Add clockwork instance
 * Add more information about email configuration and start sidekiq when testing development installation. Should the admin account be set when testing the development server?
-* Correct host name in url in emails
 * Setup social network login (Is it possible to disable this feature?)
 * Add Sam Saffron's Ruby GC tunings
 * Add thin and sidekiq as init scripts. I find this cleaner than using bluepill
