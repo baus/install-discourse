@@ -109,6 +109,11 @@ but you may want to consider installing the editor of your choice. I like emacs,
 $ sudo apt-get install emacs
 ```
 
+Make sure you system packages are up to date.
+```
+$ sudo apt-get update
+```
+
 ### Set the host name
 
 DigitalOcean's provisioning procedure doesn't correctly set the hostname when the instance is created, 
