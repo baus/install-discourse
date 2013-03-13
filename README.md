@@ -285,6 +285,7 @@ $ sudo -u www-data mkdir /var/www/discourse/tmp/sockets
 $ cd /var/www/discourse
 $ sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/thin.sock
 ```
+
 ### Start Sidekiq
 
 ```bash
@@ -297,11 +298,19 @@ $ sudo -u www-data sidekiq -e production -d -l /var/www/discourse/log/sidekiq.lo
 * Now make that account the admin:
 
 ```bash
-sudo -u www-data rails c     
-u = User.first    
-u.admin = true    
-u.save  
+$ cd /var/www/discourse
+$ sudo -u www-data rails c     
+$ u = User.first    
+$ u.admin = true    
+$ u.save  
 ```
+### Start thin using init.d
+
+```bash
+$ sudo thin install
+$ sudo /usr/sbin/update-rc.d -f thin defaults
+```
+
 Todo: add script to create the admin account
 
 ### Edit site settings
