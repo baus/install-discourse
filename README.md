@@ -243,9 +243,7 @@ This will start the development environment on port 3000.
 $ cd ~/discourse
 # Set Rails configuration
 $ export RAILS_ENV=development
-$ rake db:create
-$ rake db:migrate
-$ rake db:seed_fu
+$ rake db:create db:migrate db:seed_fu
 $ thin start
 ```
 
@@ -274,6 +272,7 @@ $ sudo service nginx start
 
 ### Deploy Discourse app to /var/www
 ```
+$ rake secret
 $ vi config/initializers/secret_token.rb
 $ export RAILS_ENV=production
 $ rake assets:precompile
