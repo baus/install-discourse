@@ -313,6 +313,7 @@ The default values are in: app/models/site_setting.rb
 
 ### TODO
 * Add clockwork instance
+* Add script to create the admin account.
 * Add more information about email configuration and start sidekiq when testing development installation. Should the admin account be set when testing the development server?
 * Setup social network login (Is it possible to disable this feature?)
 * Add Sam Saffron's Ruby GC tunings
