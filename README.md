@@ -161,7 +161,7 @@ $ bundle install
 ```
 
 ### Set Discourse application settings
-Now you have set the Discourse application settings. The configuration files are in a directory called "config"
+You must set the Discourse application settings appropriately. The configuration files are in a directory called "config"
 There are sample configuration files now included in the master branch, so you need to copy these files and
 modify them with your own changes.
 
