@@ -19,7 +19,7 @@ DigitalOcearn currently offers low cost VPS hosting, but I can not vouch for the
 
 I decided on Ubuntu 12.10 x64 since it is the most recent Ubuntu release with the most up to date packages. If you 
 concerned about the long term stability of your systems, you may want to consider Ubuntu 12.04 LTS which has 
-gaurenteed support until 2017, but the installation instructions are a bit different do to availability of certain packages.
+gaurenteed support until 2017, but the installation instructions are a bit different due to availability of some packages.
 
 Before creating your DigitalOcean instance, you should register the domain name you want to use for your forum. I'm using 
 discoursetest.org for this instance, and forum.discoursetest.org as the FQDN.  
