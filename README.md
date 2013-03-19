@@ -96,9 +96,6 @@ Discourse. Just keep the default "Internet Site."
 
 At the next prompt just enter your domain name. In my test case this is discoursetest.org.
 
-TODO: This installs redis 2.4. Discourse explicitly states that they require Redis 2.6, but this requires installing
-from source.
-
 ### Editing configuration files
 
 At various points in the installation procedure, you will need to edit configuration files with a text editor.
@@ -141,10 +138,7 @@ $ sudo gem install therubyracer -v '0.11.3'
 
 ### Configure Postgres user account
 
-Discourse uses the Postgres database to store forum data. The configuration procedure is similar to MySQL, but 
-I am a Postgres newbie, so if you have improvements to this aspect of the installation procedure, please let me know.
-
-Note: this is the easiest way to setup the Postgres server, but it also creates a highly privledged Postgres user account. 
+Discourse uses the Postgres database to store forum data. This is an easy way to setup the Postgres server, but it also creates a highly privledged Postgres user account. 
 Future revisions of this document may offer alternatives for creating the Postgres DBs, which would allow Discourse
 to login to Postgres as a user with lower privledges.
 
@@ -329,3 +323,4 @@ The default values are in: app/models/site_setting.rb
 * Add thin and sidekiq as init scripts. I find this cleaner than using bluepill
 * Create chef script based on the installation procedure
 * Lots of info on server configuration here: http://news.ycombinator.com/item?id=5316093
+* Add redis 2.6
