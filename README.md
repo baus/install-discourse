@@ -1,6 +1,8 @@
 # Installing Discourse on Ubuntu and DigitalOcean
 Copyright 2013 by Christopher Baus <christopher@baus.net>. Licensed under GPL 2.0
 
+<iframe src="http://player.vimeo.com/video/62145259" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> <p><a href="http://vimeo.com/62145259">Installing Discourse on Ubuntu 12.10</a> from <a href="http://vimeo.com/user2984638">christopher baus</a> on <a href="http://vimeo.com">Vimeo</a>.</p>
+
 Discourse is [web discussion forum software](http://discourse.org) by Jeff Atwood (et al.). Considering the 
 state of forum software, and Jeff's previous success with StackOverflow, I'm confident it is going to be a success. 
 With that said it is still in a very early state, and if you are not an expert on Linux and Ruby on Rails administration, 
