@@ -15,9 +15,9 @@ administrate their own Discourse server. I am erring on the side of verbosity.
 ### Create DigitalOcean VPS with Ubuntu 12.10x64
 
 While these instructions should work fine on most Ubuntu installations, I have explicitly tested them on DigitalOcean. 
-DigitalOcearn currently offers low cost VPS hosting, but I can not vouch for their reliability. 
+DigitalOcean offers low cost VPS hosting, but I can not vouch for their reliability. 
 
-I decided on Ubuntu 12.10 x64 since it is the most recent Ubuntu release with the most up to date packages. If you 
+I decided on Ubuntu 12.10 x64 which is the most recent Ubuntu release and contains the most recent packages. If you 
 concerned about the long term stability of your systems, you may want to consider Ubuntu 12.04 LTS which has 
 gaurenteed support until 2017, but the installation instructions are a bit different due to availability of some packages.
 
@@ -28,7 +28,7 @@ After creating your account at DigitalOcean, create a Droplet *with at least 1GB
 OS image you want to use. I set the Hostname to forum.discoursetest.org. 
 
 DigitalOcean will email the IP address and root password to you. You should go to your domain registrar and set the 
-DNS records to point to your new IP. I've set both the * and @ records to point to the VPS IP. This allows the root 
+DNS records to point to your new IP. I've set both the * and @ records to point to the VPS IP. This enables the root 
 domain and all sub-domains to resolve to VPS instance's IP address. 
 
 [1] A minimum of 1GB of RAM is required to compile assets for production.
@@ -75,8 +75,6 @@ Adding the user to the sudo group will allow the user to perform tasks as root u
 # now back at the local terminal prompt
 $ ssh admin@discoursetest.org
 ```
-
-Todo: should consider removing root SSH access at this point
 
 ### Use apt-get to install core system dependencies
 
@@ -319,6 +317,7 @@ The default values are in: app/models/site_setting.rb
 ### TODO
 * Add clockwork instance
 * Add script to create the admin account.
+* Remove root ssh access
 * Add more information about email configuration and start sidekiq when testing development installation. Should the admin account be set when testing the development server?
 * Setup social network login (Is it possible to disable this feature?)
 * Add Sam Saffron's Ruby GC tunings
