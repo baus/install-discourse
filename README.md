@@ -298,7 +298,9 @@ $ u = User.first
 $ u.admin = true    
 $ u.save  
 ```
-### Start thin using init.d
+### Start thin using init.d (work in progress)
+
+[Good explanation of the problems of using thin with init.d](http://jordanhollinger.com/2011/11/29/getting-bundler-and-thin-to-play-nicely)
 
 ```bash
 $ sudo thin install
