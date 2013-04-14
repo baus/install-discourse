@@ -5,7 +5,7 @@ Also see: [install-discourse.org](http://install-discourse.org).
 
 You may want to review the [screen capture](http://player.vimeo.com/video/62145259) of this installation process. 
 
-Discourse is [web forum software](http://discourse.org) by [Jeff Atwood](http://codinghorror.com/) (et al.). Considering the 
+Discourse is [web forum software](http://discourse.org) by [Jeff Atwood](http://codinghorror.com/) ([et](http://eviltrout.com/) [al.](http://samsaffron.com/)). Considering the 
 state of forum software, and Jeff's previous success with StackOverflow, I'm confident it is going to be a success. 
 With that said it is still in a very early state, and if you are not an expert on Linux and Ruby on Rails administration, 
 getting a Discourse site up and running can be a daunting task. 
