@@ -7,24 +7,26 @@ You may want to review the [screen capture](http://player.vimeo.com/video/621452
 
 Discourse is [web forum software](http://discourse.org) by [Jeff Atwood](http://codinghorror.com/) ([et](http://eviltrout.com/) [al.](http://samsaffron.com/)). Considering the 
 state of forum software, and Jeff's previous success with StackOverflow, I'm confident it is going to be a success. 
-With that said it is still in a very early state, and if you are not an expert on Linux and Ruby on Rails administration, 
-getting a Discourse site up and running can be a daunting task. 
+With that said it is still in a very early state, and if you are not an experienced Linux or Ruby on Rails 
+administration, getting a Discourse site up and running can be a bit daunting. 
 
 Hopefully the document will be useful for someone who has some Linux administration experience and wants to run and
-administrate their own Discourse server. I am erring on the side of verbosity.
+administrate their own server. I am erring on the side of verbosity.
 
 
 ### Create DigitalOcean VPS with Ubuntu 12.10x64
 
-While these instructions should work fine on most Ubuntu installations, I have explicitly tested them on DigitalOcean. 
-DigitalOcean offers low cost VPS hosting, but I can not vouch for their reliability. 
+While these instructions should work fine on most Ubuntu installations, I have explicitly tested them on 
+[Digital Ocean](http://digitalocean.com/). DigitalOcean offers low cost VPS hosting, but I can not vouch for their 
+reliability. 
 
 I decided on Ubuntu 12.10 x64 which is the most recent Ubuntu release and contains the most recent packages. If you 
 concerned about the long term stability of your systems, you may want to consider Ubuntu 12.04 LTS which has 
-gaurenteed support until 2017, but the installation instructions are a bit different due to availability of some packages.
+gaurenteed support until 2017, but the installation instructions are a bit different due to the availability of some 
+packages.
 
-Before creating your DigitalOcean instance, you should register the domain name you want to use for your forum. I'm using 
-discoursetest.org for this instance, and forum.discoursetest.org as the FQDN.  
+Before creating your DigitalOcean instance, you should register the domain name you want to use for your forum. 
+I'm using discoursetest.org for this instance, and forum.discoursetest.org as the [FQDN](http://en.wikipedia.org/wiki/Fully_qualified_domain_name).  
 
 After creating your account at DigitalOcean, create a Droplet *with at least 1GB of RAM* [1], and select the Ubuntu  
 OS image you want to use. I set the Hostname to forum.discoursetest.org. 
