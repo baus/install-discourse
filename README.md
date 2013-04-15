@@ -100,6 +100,11 @@ Discourse. Just keep the default "Internet Site."
 
 At the next prompt just enter your domain name. In my test case this is discoursetest.org.
 
+Also, make sure you system packages are up to date.
+```
+$ sudo apt-get update
+```
+
 ### Editing configuration files
 
 At various points in the installation procedure, you will need to edit configuration files with a text editor.
@@ -108,11 +113,6 @@ but you may want to consider installing the editor of your choice. I like emacs,
 
 ```
 $ sudo apt-get install emacs
-```
-
-Make sure you system packages are up to date.
-```
-$ sudo apt-get update
 ```
 
 ### Set the host name
@@ -184,8 +184,12 @@ Start by editing the database configuration file which should be now located at 
 $ vi ~/discourse/config/database.yml
 ```
 
-Edit the file to add your Postgres username and password to each configuration in the file. Also add host: localhost
-to the production configuration because the production DB will also be run on the localhost in this configuration.
+Edit the file to add your Postgres username and password to each configuration in the file. 
+
+Add `host: localhost` to the production configuration because the production DB will also be run on the 
+localhost in this configuration.
+
+For the production configuration make sure to your hostname to the production host_names variable.
 
 When you are done the file should look similar to:
 
@@ -193,8 +197,9 @@ When you are done the file should look similar to:
 development:
   adapter: postgresql
   database: discourse_development
-  username: admin
+  user: admin
   password: <your_postgres_password>
+  min_messages: warning
   host: localhost
   pool: 5
   timeout: 5000
@@ -207,8 +212,9 @@ development:
 test:
   adapter: postgresql
   database: discourse_test
-  username: admin
+  user: admin
   password: <your_postgres_password>
+  min_messages: warning
   host: localhost
   pool: 5
   timeout: 5000
@@ -220,13 +226,24 @@ test:
 production:
   adapter: postgresql
   database: discourse_development
-  username: admin
+  user: admin
   password: <your_postgres_password>
   host: localhost
   pool: 5
   timeout: 5000
   host_names:
-    - production.localhost
+    - discoursetest.org # Update this to be the domain of your production site
+
+profile:
+  adapter: postgresql
+  database: discourse_development
+  min_messages: warning
+  host: localhost
+  pool: 5
+  timeout: 5000
+  host_names:
+    - "localhost"
+
 ```
 
 I'm not a fan of entering the DB password as clear text in the database.yml file. If you have a better solution
