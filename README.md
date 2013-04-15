@@ -122,7 +122,7 @@ which is inconvient since they know your hostname at the point the instance is c
 editing /etc/hosts to correctly contain your hostname.
 
 ```bash
-$ vi /etc/hosts
+$ sudo vi /etc/hosts
 ```
 
 The first line of my /etc/hosts file looks like:
