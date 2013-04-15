@@ -256,9 +256,8 @@ Now you should be ready to deploy the database and start the server.
 This will start the development environment on port 3000.
 ```
 $ cd ~/discourse
-# Set Rails configuration
-$ export RAILS_ENV=development
-$ rake db:create db:migrate db:seed_fu
+# Set Rails configuration 
+$ rake db:create db:migrate db:seed_fu RAILS_ENV=development
 $ thin start
 ```
 
