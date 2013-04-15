@@ -1,3 +1,4 @@
+
 # Installing Discourse on Ubuntu and DigitalOcean
 Copyright 2013 by Christopher Baus <christopher@baus.net>. Licensed under GPL 2.0
 
@@ -7,12 +8,11 @@ You may want to review the [screen capture](http://player.vimeo.com/video/621452
 
 Discourse is [web forum software](http://discourse.org) by [Jeff Atwood](http://codinghorror.com/) ([et](http://eviltrout.com/) [al.](http://samsaffron.com/)). Considering the 
 state of forum software, and Jeff's previous success with StackOverflow, I'm confident it is going to be a success. 
-With that said it is still in a very early state, and if you are not an experienced Linux or Ruby on Rails 
-administration, getting a Discourse site up and running can be a bit daunting. 
+With that said, if you are not an experienced Linux or Ruby on Rails administration, getting a Discourse 
+site up and running can be daunting. 
 
 Hopefully the document will be useful for someone who has some Linux administration experience and wants to run and
 administrate their own server. I am erring on the side of verbosity.
-
 
 ### Create DigitalOcean VPS with Ubuntu 12.10x64
 
@@ -189,7 +189,8 @@ Edit the file to add your Postgres username and password to each configuration i
 Add `host: localhost` to the production configuration because the production DB will also be run on the 
 localhost in this configuration.
 
-For the production configuration make sure to your hostname to the production host_names variable.
+For the production configuration make sure the host_names variable references your domain. This is important to 
+make sure links in emails are generated properly. 
 
 When you are done the file should look similar to:
 
