@@ -1,4 +1,3 @@
-
 # Installing Discourse on Ubuntu and DigitalOcean
 Copyright 2013 by Christopher Baus <christopher@baus.net>. Licensed under GPL 2.0
 
@@ -16,7 +15,7 @@ administrate their own server. I am erring on the side of verbosity.
 
 ### Create DigitalOcean VPS with Ubuntu 12.10x64
 
-While these instructions should work fine on most Ubuntu installations, I have explicitly tested them on 
+While these instructions should work fine on most Ubuntu installations, I have tested them on 
 [Digital Ocean](http://digitalocean.com/). DigitalOcean offers low cost VPS hosting, but I can not vouch for their 
 reliability. 
 
