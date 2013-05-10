@@ -197,7 +197,7 @@ When you are done the file should look similar to:
 development:
   adapter: postgresql
   database: discourse_development
-  user: admin
+  username: admin
   password: <your_postgres_password>
   min_messages: warning
   host: localhost
@@ -212,7 +212,7 @@ development:
 test:
   adapter: postgresql
   database: discourse_test
-  user: admin
+  username: admin
   password: <your_postgres_password>
   min_messages: warning
   host: localhost
@@ -226,7 +226,7 @@ test:
 production:
   adapter: postgresql
   database: discourse_development
-  user: admin
+  username: admin
   password: <your_postgres_password>
   host: localhost
   pool: 5
