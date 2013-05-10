@@ -15,13 +15,12 @@ administrate their own server. I am erring on the side of verbosity.
 
 ### Create DigitalOcean VPS with Ubuntu 12.10x64
 
-While these instructions should work fine on most Ubuntu installations, I have tested them on 
+While these instructions should work fine on most Ubuntu installations, I have tested them ongau 
 [Digital Ocean](http://digitalocean.com/). DigitalOcean offers low cost VPS hosting, but I can not vouch for their 
 reliability. 
 
 I decided on Ubuntu 12.10 x64 which is the most recent Ubuntu release and contains the most recent packages. If you 
-concerned about the long term stability of your systems, you may want to consider Ubuntu 12.04 LTS which has 
-gaurenteed support until 2017, but the installation instructions are a bit different due to the availability of some 
+concerned about the long term stability of your systems, you may want to consider Ubuntu 12.04 LTS which has guaranteed support until 2017, but the installation instructions are a bit different due to the availability of some 
 packages.
 
 Before creating your DigitalOcean instance, you should register the domain name you want to use for your forum. 
