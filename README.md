@@ -15,7 +15,7 @@ administrate their own server. I am erring on the side of verbosity.
 
 ### Create DigitalOcean VPS with Ubuntu 12.10x64
 
-While these instructions should work fine on most Ubuntu installations, I have tested them ongau 
+While these instructions should work fine on most Ubuntu installations, I have tested them on 
 [Digital Ocean](http://digitalocean.com/). DigitalOcean offers low cost VPS hosting, but I can not vouch for their 
 reliability. 
 
