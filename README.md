@@ -297,13 +297,13 @@ $ sudo -u www-data mkdir /var/www/discourse/tmp/sockets
 ### Start Thin as a daemon listening on domain sockets
 ```bash
 $ cd /var/www/discourse
-$ sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/thin.sock
+$ sudo -u www-data bundle exec thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/thin.sock
 ```
 
 ### Start Sidekiq
 
 ```bash
-$ sudo -u www-data sidekiq -e production -d -l /var/www/discourse/log/sidekiq.log
+$ sudo -u www-data bundle exec sidekiq -e production -d -l /var/www/discourse/log/sidekiq.log
 ```
 
 ### Create Discourse admin account
@@ -313,7 +313,7 @@ $ sudo -u www-data sidekiq -e production -d -l /var/www/discourse/log/sidekiq.lo
 
 ```bash
 $ cd /var/www/discourse
-$ sudo -u www-data rails c     
+$ sudo -u www-data bundle exec rails c     
 $ u = User.first    
 $ u.admin = true    
 $ u.save  
