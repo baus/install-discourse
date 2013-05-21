@@ -313,7 +313,7 @@ $ sudo -u www-data bundle exec sidekiq -e production -d -l /var/www/discourse/lo
 
 ```bash
 $ cd /var/www/discourse
-$ sudo -u www-data bundle exec rails c     
+$ sudo -u www-data bundle exec rails c production     
 $ u = User.first    
 $ u.admin = true    
 $ u.save  
