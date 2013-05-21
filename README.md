@@ -288,21 +288,24 @@ $ sudo service nginx start
 $ rake secret
 $ vi config/initializers/secret_token.rb
 $ export RAILS_ENV=production
+$ rake db:create db:migrate db:seed_fu
 $ rake assets:precompile
 $ sudo -u www-data cp -r ~/discourse/ /var/www
 $ sudo -u www-data mkdir /var/www/discourse/tmp/sockets
+$ cp /var/www/discourse/config/environments/production.sample.rb \
+     /var/www/discourse/config/environments/production.rb
 ```
 
 ### Start Thin as a daemon listening on domain sockets
 ```bash
 $ cd /var/www/discourse
-$ sudo -u www-data thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/thin.sock
+$ sudo -u www-data bundle exec thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/thin.sock
 ```
 
 ### Start Sidekiq
 
 ```bash
-$ sudo -u www-data sidekiq -e production -d -l /var/www/discourse/log/sidekiq.log
+$ sudo -u www-data bundle exec sidekiq -e production -d -l /var/www/discourse/log/sidekiq.log
 ```
 
 ### Create Discourse admin account
@@ -312,7 +315,7 @@ $ sudo -u www-data sidekiq -e production -d -l /var/www/discourse/log/sidekiq.lo
 
 ```bash
 $ cd /var/www/discourse
-$ sudo -u www-data rails c     
+$ sudo -u www-data bundle exec rails c production     
 $ u = User.first    
 $ u.admin = true    
 $ u.save  
