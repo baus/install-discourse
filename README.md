@@ -284,7 +284,7 @@ $ sudo service nginx start
 ```
 
 ### Deploy Discourse app to /var/www
-# This needs more discussion...
+This needs more discussion...
 ```
 $ rake secret
 $ sudo vi config/intializers/secret_token.rb
