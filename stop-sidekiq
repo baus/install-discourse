@@ -1,0 +1,2 @@
+sudo sidekiqctl stop tmp/pids/sidekiq.pid
+ps auxww|grep sidekiq|grep -v grep
