@@ -135,7 +135,7 @@ You should replace discoursetest.org with your own domain name.
 
 ```bash
 $ sudo gem install bundler
-$ sudo gem install therubyracer -v '0.11.3'
+$ sudo gem install therubyracer -v '0.11.3' (is this still needed?)
 ```
 
 ### Configure Postgres user account
