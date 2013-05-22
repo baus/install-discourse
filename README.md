@@ -297,8 +297,7 @@ $ rake db:create db:migrate db:seed_fu
 $ rake assets:precompile
 $ sudo -u www-data cp -r ~/discourse/ /var/www
 $ sudo -u www-data mkdir /var/www/discourse/tmp/sockets
-$ cp /var/www/discourse/config/environments/production.sample.rb \
-     /var/www/discourse/config/environments/production.rb
+$ sudo cp /var/www/discourse/config/environments/production.sample.rb /var/www/discourse/config/environments/production.rb
 ```
 
 ### Start Thin as a daemon listening on domain sockets
