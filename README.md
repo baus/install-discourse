@@ -286,7 +286,6 @@ $ sudo service nginx start
 ### Deploy Discourse app to /var/www
 ```
 $ rake secret
-$ vi config/initializers/secret_token.rb
 $ export RAILS_ENV=production
 $ rake db:create db:migrate db:seed_fu
 $ rake assets:precompile
