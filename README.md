@@ -67,7 +67,8 @@ Adding the user to the sudo group will allow the user to perform tasks as root u
 [sudo](https://help.ubuntu.com/community/RootSudo) command. 
 
 ```bash
-~# adduser admin
+~# adduser admin --gecos ""
+# Note: --gecos supresses prompts for the user meta data such as name, room number, work phone, etc.
 ~# adduser admin sudo
 ```
 ### Login using the admin account
