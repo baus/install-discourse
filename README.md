@@ -5,7 +5,9 @@ Copyright 2013 by Christopher Baus <christopher@baus.net>. Licensed under GPL 2.
 
 **I will be updating these instructions as a suplement to their recommendations shortly.** 
 
+Cross refernce:
 Official Discourse Ubuntu Guide: https://github.com/discourse/discourse/blob/master/docs/INSTALL-ubuntu.md
+
 Deploying Discourse using Capistrano: http://davidcel.is/blog/2013/05/02/deploying-discourse-with-capistrano/
 
 You may want to review the screen capture: http://player.vimeo.com/video/62145259 
