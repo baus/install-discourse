@@ -3,7 +3,7 @@ Copyright 2013 by Christopher Baus <christopher@baus.net>. Licensed under GPL 2.
 
 **NOTE: There is now official Ubuntu installation instructions from Discourse**
 
-**I will be updating these instructions as a suplement to their recommendations shortly.** 
+**I will be updating these instructions as a supplement to their recommendations shortly.** 
 
 References:
 
@@ -74,7 +74,7 @@ Adding the user to the sudo group will allow the user to perform tasks as root u
 
 ```bash
 ~# adduser admin --gecos ""
-# Note: --gecos supresses prompts for the user meta data such as name, room number, work phone, etc.
+# Note: --gecos suppresses prompts for the user meta data such as name, room number, work phone, etc.
 ~# adduser admin sudo
 ```
 ### Login using the admin account
@@ -90,8 +90,8 @@ $ ssh admin@discoursetest.org
 The apt-get command is used to add packages to Ubuntu (and all Debian based Linux distributions). DigitalOcean, like many VPS's, ships
 with a limited Ubuntu configuration, so you will have to install many of the software the dependencies yourself.
 
-To install system packages, you must have root privledges. Since the admin account is part of the sudo group, the
-admin account can run commands with root privledges by using the sudo command. Just prepend sudo to any commands you
+To install system packages, you must have root privileges. Since the admin account is part of the sudo group, the
+admin account can run commands with root privileges by using the sudo command. Just prepend sudo to any commands you
 want to run as root. This includes apt-get commands to install packages.
 
 ```bash
@@ -123,7 +123,7 @@ $ sudo apt-get install emacs
 ### Set the host name
 
 DigitalOcean's provisioning procedure doesn't correctly set the hostname when the instance is created, 
-which is inconvient since they know your hostname at the point the instance is created. I'd recommend 
+which is inconvenient since they know your hostname at the point the instance is created. I'd recommend 
 editing /etc/hosts to correctly contain your hostname.
 
 ```bash
@@ -147,9 +147,9 @@ $ sudo gem install therubyracer -v '0.11.3' (is this still needed?)
 
 ### Configure Postgres user account
 
-Discourse uses the Postgres database to store forum data. This is an easy way to setup the Postgres server, but it also creates a highly privledged Postgres user account. 
+Discourse uses the Postgres database to store forum data. This is an easy way to setup the Postgres server, but it also creates a highly privileged Postgres user account. 
 Future revisions of this document may offer alternatives for creating the Postgres DBs, which would allow Discourse
-to login to Postgres as a user with lower privledges.
+to login to Postgres as a user with lower privileges.
 
 ```bash
 $ sudo -u postgres createuser admin -s -P
