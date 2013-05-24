@@ -1,1 +1,0 @@
-sudo bundle exec clockworkd -c config/clock.rb --pid-dir=tmp/pids -i discourse-clock --log-dir=log stop

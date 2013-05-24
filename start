@@ -1,6 +1,0 @@
-echo "Starting 4 thin servers"
-sudo -u www-data bundle exec thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/thin.sock
-echo "Starting Sidekiq"
-./start-sidekiq
-echo "Starting clockwork"
-./start-clockwork

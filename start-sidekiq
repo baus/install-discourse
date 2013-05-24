@@ -1,1 +1,0 @@
-sudo -u www-data bundle exec sidekiq -e production -d -l /var/www/discourse/log/sidekiq.log -P /var/www/discourse/tmp/pids/sidekiq.pid
