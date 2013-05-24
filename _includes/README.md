@@ -1,14 +1,9 @@
----
-title: Installing Discourse on Ubuntu
-layout: default
----
-
 # Installing Discourse on Ubuntu and DigitalOcean
 Copyright 2013 by Christopher Baus <christopher@baus.net>. Licensed under GPL 2.0
 
 **NOTE: There is now official Ubuntu installation instructions from Discourse**
 
-**I will be updating these instructions as a suplement to their recommendations shortly.** 
+**I will be updating these instructions as a supplement to their recommendations shortly.** 
 
 References:
 
@@ -64,7 +59,7 @@ your new server. Windows users should consider installing [Putty](http://putty.o
 
 Since your password has been emailed to you in clear text, you should immediately change your password for security reasons.
 
-```bash
+```
 root@host:~# passwd
 # # Enter your new password
 ```
@@ -77,14 +72,14 @@ call the new user "admin."
 Adding the user to the sudo group will allow the user to perform tasks as root using the 
 [sudo](https://help.ubuntu.com/community/RootSudo) command. 
 
-```bash
+```
 ~# adduser admin --gecos ""
 # Note: --gecos supresses prompts for the user meta data such as name, room number, work phone, etc.
 ~# adduser admin sudo
 ```
 ### Login using the admin account
 
-```bash
+```
 ~# logout
 # now back at the local terminal prompt
 $ ssh admin@discoursetest.org
@@ -99,7 +94,7 @@ To install system packages, you must have root privledges. Since the admin accou
 admin account can run commands with root privledges by using the sudo command. Just prepend sudo to any commands you
 want to run as root. This includes apt-get commands to install packages.
 
-```bash
+```
 # Install required packages
 $ sudo apt-get install postgresql-9.1 postgresql-contrib-9.1 make g++ \
 libxml2-dev libxslt-dev libpq-dev ruby1.9.3 git redis-server nginx postfix
@@ -131,12 +126,12 @@ DigitalOcean's provisioning procedure doesn't correctly set the hostname when th
 which is inconvient since they know your hostname at the point the instance is created. I'd recommend 
 editing /etc/hosts to correctly contain your hostname.
 
-```bash
+```
 $ sudo vi /etc/hosts
 ```
 
 The first line of my /etc/hosts file looks like:
-```bash
+```
 127.0.0.1  forum.discoursetest.org forum localhost
 ```
 
@@ -145,7 +140,7 @@ You should replace discoursetest.org with your own domain name.
 
 ### Install the Bundler app which installs Rails dependencies
 
-```bash
+```
 $ sudo gem install bundler
 $ sudo gem install therubyracer -v '0.11.3' (is this still needed?)
 ```
@@ -156,7 +151,7 @@ Discourse uses the Postgres database to store forum data. This is an easy way to
 Future revisions of this document may offer alternatives for creating the Postgres DBs, which would allow Discourse
 to login to Postgres as a user with lower privledges.
 
-```bash
+```
 $ sudo -u postgres createuser admin -s -P
 ```
 
@@ -166,7 +161,7 @@ Now we are ready install the actual Discourse application. This will pull a copy
 The advantage of using this branch is that it has been tested with these instructions, but it may fall behind the master
 which is rapidly changing. 
 
-```bash
+```
 # Pull the latest version from github.
 $ git clone https://github.com/baus/discourse.git
 $ cd discourse
@@ -190,7 +185,7 @@ Now you need to edit the configuration files and apply your own settings.
 
 Start by editing the database configuration file which should be now located at ~/discourse/config/database.yml
 
-```bash
+```
 $ vi ~/discourse/config/database.yml
 ```
 
@@ -287,7 +282,7 @@ $ sudo chmod g+w /var/www
 
 ### Configure nginx
 
-```bash
+```
 $ cd ~/discourse/
 $ sudo cp config/nginx.sample.conf /etc/nginx/sites-available/discourse.conf
 $ sudo ln -s /etc/nginx/sites-available/discourse.conf /etc/nginx/sites-enabled/discourse.conf
@@ -313,14 +308,14 @@ $ sudo cp /var/www/discourse/config/environments/production.sample.rb /var/www/d
 ```
 
 ### Start Thin as a daemon listening on domain sockets
-```bash
+```
 $ cd /var/www/discourse
 $ sudo -u www-data bundle exec thin start -e production -s4 --socket /var/www/discourse/tmp/sockets/thin.sock
 ```
 
 ### Start Sidekiq
 
-```bash
+```
 $ sudo -u www-data bundle exec sidekiq -e production -d -l /var/www/discourse/log/sidekiq.log
 ```
 
@@ -329,7 +324,7 @@ $ sudo -u www-data bundle exec sidekiq -e production -d -l /var/www/discourse/lo
 * Logon to site and create account using the application UI
 * Now make that account the admin:
 
-```bash
+```
 $ cd /var/www/discourse
 $ sudo -u www-data bundle exec rails c production     
 $ u = User.first    
@@ -340,7 +335,7 @@ $ u.save
 
 [Good explanation of the problems of using thin with init.d](http://jordanhollinger.com/2011/11/29/getting-bundler-and-thin-to-play-nicely)
 
-```bash
+```
 $ sudo thin install
 $ sudo /usr/sbin/update-rc.d -f thin defaults
 ```
