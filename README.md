@@ -349,6 +349,7 @@ The default values are in: app/models/site_setting.rb
 * Set the notification_email. It is the from address used in emails from the system. I set it to info@discoursetest.org.
 
 ### TODO
+* I tried to avoid it, but I've come around to considering [RVM](http://ryanbigg.com/2010/12/ubuntu-ruby-rvm-rails-and-you/)
 * Add clockwork instance
 * Add script to create the admin account.
 * Remove root ssh access
