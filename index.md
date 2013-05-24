@@ -1,5 +1,6 @@
 ---
 title: Installing Discourse on Ubuntu
+layout: default
 ---
 
 # Installing Discourse on Ubuntu and DigitalOcean
