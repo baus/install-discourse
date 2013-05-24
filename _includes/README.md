@@ -48,7 +48,7 @@ I will use discoursetest.org when a domain name is required in the installation.
 discoursetest.org with your own domain name. If you are using OS X or Linux, start a terminal and ssh to 
 your new server. Windows users should consider installing [Putty](http://putty.org/) to access your new server.
 
-```bash
+```
 # From your local shell on OS X or Linux
 # Remember to replace discoursetest.org with your own domain.
 ~$ ssh root@discoursetest.org
@@ -274,7 +274,7 @@ I tested the configuration by going to http://discoursetest.org:3000/
 ## WARNING: very preliminary instructions follows
 
 ### Setup the www-data account
-```bash
+```
 $ sudo mkdir /var/www
 $ sudo chgrp www-data /var/www
 $ sudo chmod g+w /var/www
