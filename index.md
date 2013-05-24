@@ -1,3 +1,7 @@
+---
+title: Installing Discourse on Ubuntu
+---
+
 # Installing Discourse on Ubuntu and DigitalOcean
 Copyright 2013 by Christopher Baus <christopher@baus.net>. Licensed under GPL 2.0
 
