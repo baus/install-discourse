@@ -294,7 +294,7 @@ $ sudo service nginx start
 This needs more discussion...
 ```
 $ rake secret
-$ sudo vi config/intializers/secret_token.rb
+$ sudo vi config/initializers/secret_token.rb
 ```
 
 
