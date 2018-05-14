@@ -3,8 +3,6 @@ Copyright 2013 by Christopher Baus <christopher@baus.net>. Licensed under GPL 2.
 
 **NOTE: There is now official Ubuntu installation instructions from Discourse**
 
-**I will be updating these instructions as a supplement to their recommendations shortly.** 
-
 References:
 
 * [Screen capture of this procedure](http://player.vimeo.com/video/62145259)
